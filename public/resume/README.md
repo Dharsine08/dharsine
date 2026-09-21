@@ -1,17 +1,9 @@
 # Resume PDF placeholder
 
-The "Download Resume" button on the site links to:
+If you'd like a "Download Resume" button, add your resume PDF to this
+folder (`public/resume/`), name it `Jerin_J_Resume.pdf`, and link to
+`/resume/Jerin_J_Resume.pdf` from wherever you'd like the button
+(e.g. the Career Profile or About section).
 
-```
-/resume/Dharsine_S_Resume.pdf
-```
-
-That file doesn't exist yet. To make the button work, add your actual
-resume PDF to this folder (`public/resume/`) and name it exactly:
-
-```
-Dharsine_S_Resume.pdf
-```
-
-No code changes are needed — Vite serves everything in `public/` as-is,
-so the button will start working as soon as the file is in place.
+No code changes beyond adding the link are needed — Vite serves
+everything in `public/` as-is.

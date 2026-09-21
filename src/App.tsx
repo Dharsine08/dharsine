@@ -1,11 +1,11 @@
+import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Hero from "./components/sections/Hero";
 import About from "./components/sections/About";
-import ResumeBlock from "./components/sections/ResumeBlock";
-import Projects from "./components/sections/Projects";
-import Certification from "./components/sections/Certification";
+import Education from "./components/sections/Education";
+import CareerProfile from "./components/sections/CareerProfile";
 import Strengths from "./components/sections/Strengths";
-import LanguagesAchievements from "./components/sections/LanguagesAchievements";
+import LanguagesDetails from "./components/sections/LanguagesDetails";
 import Contact from "./components/sections/Contact";
 import { navSections } from "./data/sections";
 import { useActiveSection } from "./hooks/useActiveSection";
@@ -16,15 +16,15 @@ function App() {
   const activeId = useActiveSection(sectionIds);
 
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen bg-white">
+      <Navbar activeId={activeId} />
       <main>
-        <Hero activeId={activeId} />
-        <About activeId={activeId} />
-        <ResumeBlock />
-        <Projects />
-        <Certification />
+        <Hero />
+        <About />
+        <Education />
+        <CareerProfile />
         <Strengths />
-        <LanguagesAchievements />
+        <LanguagesDetails />
         <Contact />
       </main>
       <Footer />

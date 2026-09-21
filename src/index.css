@@ -1,24 +1,22 @@
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600&family=Inter:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --font-heading: "Fraunces", "Georgia", serif;
+  --font-heading: "Playfair Display", "Georgia", serif;
   --font-body: "Inter", system-ui, sans-serif;
 
-  --color-green: #334c36;
-  --color-green-soft: #3d5941;
-  --color-cream: #f7efe2;
-  --color-cream-soft: #efe4d1;
-  --color-gold: #f1ac20;
-  --color-gold-text: #cca735;
-  --color-coral: #fb6332;
-  --color-black: #171512;
-  --color-ink: #241f18;
-  --color-ink-soft: #5c5344;
-  --color-line: #e3d8c3;
+  --color-charcoal: #242428;
+  --color-black: #171719;
+  --color-white: #ffffff;
+  --color-grey: #e8e8e8;
+  --color-blue: #2456a6;
+  --color-gold: #f5c928;
+  --color-ink: #1c1c1f;
+  --color-ink-soft: #6b6b70;
+  --color-line: #dcdce0;
 
-  --shadow-card: 0 10px 30px -14px rgb(23 21 18 / 0.25);
-  --shadow-card-lg: 0 24px 55px -18px rgb(23 21 18 / 0.35);
+  --shadow-card: 0 10px 30px -14px rgb(0 0 0 / 0.3);
+  --shadow-card-lg: 0 28px 60px -20px rgb(0 0 0 / 0.5);
 }
 
 html {
@@ -29,7 +27,7 @@ body {
   margin: 0;
   font-family: var(--font-body);
   color: var(--color-ink);
-  background: var(--color-cream);
+  background: var(--color-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -48,18 +46,11 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
-.pill-heading {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--color-green);
-  color: var(--color-cream);
-  border-radius: 999px;
-  padding: 0.4rem 1.25rem;
-  font-weight: 700;
-  font-size: 0.78rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(36, 36, 40, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(36, 36, 40, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
 @keyframes fade-up {
@@ -75,17 +66,4 @@ h1, h2, h3, h4, h5, h6 {
 
 .animate-fade-up {
   animation: fade-up 0.6s ease both;
-}
-
-@keyframes sparkle-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-sparkle {
-  animation: sparkle-spin 6s linear infinite;
 }

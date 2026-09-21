@@ -4,8 +4,11 @@ export interface NavSection {
 }
 
 export const navSections: NavSection[] = [
-  { id: "about", label: "About me" },
-  { id: "resume", label: "Resume" },
-  { id: "work", label: "Work" },
+  { id: "home", label: "Home" },
+  { id: "about", label: "About Me" },
+  { id: "education", label: "Education" },
+  { id: "qualifications", label: "Qualifications" },
+  { id: "strengths", label: "Key Strengths" },
+  { id: "languages", label: "Languages" },
   { id: "contact", label: "Contact" },
 ];
