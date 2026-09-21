@@ -6,42 +6,48 @@ export default function Education() {
   const ref = useFadeIn<HTMLDivElement>();
 
   return (
-    <section id="education" className="bg-black px-6 py-20 sm:px-10">
+    <section className="bg-cream px-6 py-20 sm:px-10">
       <div ref={ref} className="fade-in-section mx-auto max-w-6xl">
-        <h2 className="display-heading text-5xl text-cream sm:text-7xl">Education</h2>
+        <p className="mb-2 text-xs font-bold uppercase tracking-[0.3em] text-ink-soft">
+          Academic Background
+        </p>
+        <h2 className="display-heading break-words text-4xl text-charcoal sm:text-6xl">Education</h2>
 
-        <div className="mt-12 flex flex-col gap-6">
+        <div className="mt-10 flex flex-col gap-5">
           {education.map((item) => (
             <div
               key={item.degree}
-              className={`flex flex-col gap-4 rounded-2xl border p-7 sm:flex-row sm:items-center sm:justify-between ${
+              className={`flex flex-col gap-3 rounded-2xl border p-6 sm:flex-row sm:items-center sm:justify-between ${
                 item.current
-                  ? "border-green bg-green/15 shadow-card-lg"
-                  : "border-line bg-charcoal"
+                  ? "border-terracotta bg-white shadow-card-lg"
+                  : "border-line bg-white/60"
               }`}
             >
               <div className="flex items-start gap-4">
                 <span
-                  className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full ${
-                    item.current ? "bg-green text-cream" : "bg-white/5 text-grey"
+                  className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full ${
+                    item.current ? "bg-terracotta text-cream" : "bg-grey text-ink-soft"
                   }`}
                 >
-                  <GraduationCap size={22} />
+                  <GraduationCap size={20} />
                 </span>
                 <div>
                   <p
                     className={`display-heading ${
-                      item.current ? "text-2xl sm:text-3xl" : "text-xl"
-                    } text-cream`}
+                      item.current ? "text-xl sm:text-2xl" : "text-lg"
+                    } text-charcoal`}
                   >
                     {item.degree}
                   </p>
-                  <p className="mt-1 text-sm text-grey">{item.institution}</p>
+                  {item.detail && (
+                    <p className="mt-0.5 text-sm font-semibold text-terracotta">{item.detail}</p>
+                  )}
+                  <p className="mt-1 text-sm text-ink-soft">{item.institution}</p>
                 </div>
               </div>
               <span
                 className={`w-fit shrink-0 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wide ${
-                  item.current ? "bg-green text-cream" : "bg-white/10 text-grey"
+                  item.current ? "bg-terracotta text-cream" : "bg-grey text-ink-soft"
                 }`}
               >
                 {item.status}

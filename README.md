@@ -1,12 +1,12 @@
-# Nithish R. — Personal Portfolio
+# Akash M. — Personal Portfolio
 
-A premium, responsive personal portfolio website for **Nithish R.**, an
-MBA student aspiring to build a career in financial analysis, business,
-and financial technology. Built with React, Vite, TypeScript, Tailwind
-CSS, and Lucide icons, in a bold editorial design inspired by an
-oversized-typography portfolio reference (huge condensed "PORTFOLIO"
-hero heading, grayscale cutout-style profile photography, dark
-charcoal/forest-green/cream palette, asymmetric layouts).
+A premium, responsive personal portfolio website for **Akash M.**, an MBA
+Finance & Marketing candidate with an interest in financial analysis,
+business analytics, and data visualization. Built with React, Vite,
+TypeScript, Tailwind CSS, and Lucide icons, in a warm cream/terracotta
+editorial design inspired by a bold-typography portfolio reference
+(oversized "PORTFOLIO" hero heading, portrait overlapping the type,
+elegant serif accents, muted terracotta/rust palette).
 
 ## Tech stack
 
@@ -36,27 +36,27 @@ npm run lint      # run oxlint
 
 ```
 src/
-  assets/photo/profile.png      # profile photo used in the hero and "Who I Am" section
+  assets/photo/profile.jpg      # profile photo (extracted from the uploaded headshot, optimised as JPEG)
   components/
     Navbar.tsx                   # fixed nav bar (Home/About/Portfolio/Contact), scroll-spy aware, mobile menu
-    Footer.tsx                   # name/title, nav links, dynamic copyright year, back-to-top
+    Footer.tsx                   # name/title, LinkedIn + email icons, nav links, dynamic copyright year, back-to-top
     sections/
-      Hero.tsx                    # oversized "Portfolio" heading, grayscale photo, contact details
-      WhoIAm.tsx                   # forest-green "Who I Am" — oversized heading + photo + intro
-      SkillsTable.tsx               # "What I Bring To The Table" — 3 skill cards
-      Education.tsx                  # MBA (current) + BBA (completed) cards
-      AcademicProject.tsx             # "Selected Work" — FinTech Project feature block
-      CareerInterests.tsx              # "Where I'm Headed" — 3 career-interest blocks
-      ApproachJourney.tsx               # "My Approach" strengths + "Professional Journey" note
+      Hero.tsx                    # oversized "Portfolio" heading, grayscale-blended portrait, intro, CTA
+      WhoIAm.tsx                   # "Who I Am" — photo + professional summary + areas of interest
+      SelectedProjects.tsx          # numbered project layout + illustrative Dashboard Preview mockup
+      Skills.tsx                     # Skills & Expertise — 3 categories + Tools & Technology (segmented indicators)
+      Education.tsx                   # MBA (current) + B.Com CA + Class XII
+      Certifications.tsx               # 6 numbered certification/learning cards
+      InterestsBring.tsx                # Areas of Interest + "What I Bring" statement + strength tags
       Contact.tsx                        # "Let's Connect" — validated form + contact details
   data/
-    resume.ts                    # ALL editable content: bio, education, skills, project, etc.
+    resume.ts                    # ALL editable content: bio, project, skills, education, certifications, etc.
     sections.ts                  # nav items (id, label)
   hooks/
     useActiveSection.ts          # IntersectionObserver-based scroll-spy for nav highlighting
     useFadeIn.ts                  # IntersectionObserver-based fade-in-on-scroll (respects prefers-reduced-motion)
   App.tsx
-  index.css                      # Tailwind import + charcoal/green/cream design tokens, Anton (display) + Inter fonts
+  index.css                      # Tailwind import + cream/charcoal/terracotta design tokens, Archivo Black (display) + Playfair Display (serif) + Inter fonts
 public/
   resume/                        # optional: add a resume PDF here if you want a download link
 ```
@@ -64,45 +64,40 @@ public/
 ## Content accuracy note
 
 `src/data/resume.ts` is the single source of truth for all content.
-Every field comes directly from the brief supplied for this build.
-Nothing was invented:
+Every field comes directly from the detailed brief supplied for this
+build. Nothing was invented:
 
-- No LinkedIn profile URL was supplied, so the Contact section shows
-  "Nithish R." with an explicit **"No URL provided"** badge instead of a
-  fabricated link.
-- The academic project only lists what was given (title, category, one
-  description line) plus a note that further details can be added later
-  — no invented objectives, technologies, or outcomes. Its "View
-  Project" state is disabled since no real project URL/document exists
-  yet (see `academicProject.hasRealLink` in `resume.ts`).
-- The Professional Journey section presents the "no formal work
-  experience yet" note positively, exactly as supplied, rather than
-  inventing an internship or job history.
+- The **Dashboard Preview** in Selected Projects is explicitly labelled
+  "Illustrative sample data" — the KPI cards show "Illustrative" instead
+  of fabricated numbers, and the trend/profitability charts use
+  placeholder shapes, never presented as real project results.
+- Tool proficiency (`tools` in `resume.ts`) is shown as a 3-segment
+  indicator tied to the resume's own qualitative levels (Intermediate /
+  Basics / Familiar) — deliberately not a smooth percentage bar, since no
+  numeric proficiency was ever stated.
+- The featured project's "View Project" state is replaced with an
+  interactive **"Project Overview"** toggle (see `SelectedProjects.tsx`),
+  since no real project file or link exists yet.
 
 ## Replacing the profile photo
 
-Swap `src/assets/photo/profile.png` with your own image (same filename,
-or update the two `import profilePhoto from "../assets/photo/profile.png"`
+Swap `src/assets/photo/profile.jpg` with your own image (same filename,
+or update the `import profilePhoto from "../assets/photo/profile.jpg"`
 lines in `Hero.tsx` and `WhoIAm.tsx` if you rename it). The current photo
-has a plain light background, so the hero applies a CSS radial-gradient
-mask (see the `style` prop in `Hero.tsx`) to fade its edges into the dark
-background for an editorial cutout-style effect — a true background-removed
-cutout photo would look even better if you have one.
+has a plain studio background, so the hero applies a CSS radial-gradient
+mask (see the `style` prop in `Hero.tsx`) to blend its edges into the
+cream background — a true background-removed cutout would look even
+better if you have one.
 
-## Adding a resume PDF download
+## Adding real dashboard screenshots
 
-No download button was requested in the brief, so none is wired up. If
-you'd like one, add your PDF to `public/resume/` as
-`Nithish_R_Resume.pdf` (see `public/resume/README.md`) and add a
-link/button pointing to `/resume/Nithish_R_Resume.pdf` wherever you'd
-like it.
-
-## Adding real project details
-
-Once you have more information about the FinTech Project (or a real
-link/document), update `academicProject` in `src/data/resume.ts`:
-add the details, set `hasRealLink: true`, and wire the "View Project"
-button in `AcademicProject.tsx` to the real URL.
+Once you have an actual screenshot of your Excel/Power BI dashboard,
+replace the `DashboardPreview` component in `SelectedProjects.tsx` with
+an `<img>` of the real screenshot (or keep both — a toggle between
+"Preview" and "Screenshot" — if you'd like). Remove the "Illustrative
+sample data" label once real data/figures are shown, and only add a
+"View Project" link once you have a real file, repository, or hosted
+link (set `featuredProject.hasRealLink: true` in `resume.ts` first).
 
 ## Connecting the contact form
 
