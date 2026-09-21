@@ -8,66 +8,44 @@ function scrollToSection(id: string) {
 
 export default function Hero() {
   return (
-    <section
-      id="home"
-      className="relative overflow-hidden bg-cream px-6 pb-16 pt-28 sm:px-10 sm:pt-32"
-    >
-      <div className="mx-auto max-w-6xl">
-        <div className="flex flex-col gap-1 text-xs font-bold uppercase tracking-widest text-ink-soft sm:flex-row sm:items-start sm:justify-between">
-          <span className="min-w-0">{personal.labels.join(" • ")}</span>
-          <span className="hidden sm:inline">Available for Opportunities</span>
-        </div>
-
-        <div className="relative mt-6">
-          <h1 className="display-heading animate-fade-up select-none text-center text-[15vw] text-charcoal sm:text-[13vw] lg:text-[9rem]">
-            Portfolio
+    <section id="home" className="grid grid-cols-1 lg:grid-cols-2">
+      <div className="flex items-center bg-bg px-6 pb-16 pt-28 sm:px-10 lg:pt-24">
+        <div className="animate-fade-up mx-auto w-full max-w-lg lg:mx-0 lg:ml-auto lg:mr-0 lg:pr-12">
+          <p className="text-sm font-semibold uppercase tracking-widest text-text-soft">
+            Hello, I'm
+          </p>
+          <h1 className="mt-2 text-5xl font-extrabold leading-[1.05] text-yellow sm:text-6xl">
+            {personal.name}
           </h1>
+          <p className="mt-4 text-lg font-semibold text-text sm:text-xl">{personal.title}</p>
+          <p className="mt-5 leading-relaxed text-text-soft">{personal.intro}</p>
 
-          <div className="animate-fade-up pointer-events-none absolute inset-x-0 bottom-0 mx-auto flex justify-center">
-            <img
-              src={profilePhoto}
-              alt={personal.name}
-              className="photo-mono h-[36vw] max-h-72 w-auto object-contain sm:h-[24vw] lg:h-64"
-              style={{
-                WebkitMaskImage:
-                  "radial-gradient(ellipse 60% 78% at 50% 40%, black 55%, transparent 96%)",
-                maskImage:
-                  "radial-gradient(ellipse 60% 78% at 50% 40%, black 55%, transparent 96%)",
-              }}
-            />
-          </div>
-        </div>
-
-        <div className="animate-fade-up mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 sm:items-end">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-terracotta">
-              Hello, I'm
-            </p>
-            <h2 className="display-heading mt-1 text-3xl text-charcoal sm:text-4xl">
-              {personal.name}
-            </h2>
-            <p className="mt-1 text-xs font-bold uppercase tracking-wide text-ink-soft">
-              MBA Finance &amp; Marketing
-            </p>
-            <p className="mt-3 max-w-sm text-sm italic text-ink-soft">
-              &ldquo;{personal.tagline}&rdquo;
-            </p>
-          </div>
-
-          <div className="sm:text-right">
-            <p className="max-w-sm text-sm leading-relaxed text-charcoal sm:ml-auto">
-              {personal.intro}
-            </p>
+          <div className="mt-8 flex flex-wrap gap-4">
             <button
               type="button"
-              onClick={() => scrollToSection("portfolio")}
-              className="group mt-5 inline-flex items-center gap-2 rounded-full bg-terracotta px-6 py-3 text-sm font-bold text-cream transition-transform hover:-translate-y-0.5"
+              onClick={() => scrollToSection("skills")}
+              className="rounded-lg border-2 border-yellow px-6 py-3 text-sm font-bold uppercase tracking-wide text-yellow transition-colors hover:bg-yellow hover:text-bg"
             >
-              Explore My Work
-              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+              View My Skills
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollToSection("contact")}
+              className="group flex items-center gap-2 rounded-lg bg-yellow px-6 py-3 text-sm font-bold uppercase tracking-wide text-bg transition-transform hover:-translate-y-0.5"
+            >
+              Contact Me
+              <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
             </button>
           </div>
         </div>
+      </div>
+
+      <div className="relative order-first flex items-end justify-center overflow-hidden bg-yellow lg:order-none">
+        <img
+          src={profilePhoto}
+          alt={personal.name}
+          className="h-[60vw] max-h-[420px] w-auto object-cover object-top sm:h-[45vw] lg:h-full lg:max-h-none lg:w-full"
+        />
       </div>
     </section>
   );
