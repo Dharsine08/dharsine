@@ -1,41 +1,65 @@
-import TornEdge from "../TornEdge";
+import { Mail, Phone } from "lucide-react";
 import { personal } from "../../data/resume";
+import profilePhoto from "../../assets/photo/profile.png";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative">
-      <div className="grid-pattern relative overflow-hidden bg-white px-6 pb-20 pt-28 sm:px-10 sm:pt-32">
-        <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-          <span className="animate-fade-up mb-4 inline-flex -rotate-3 items-center gap-1.5 rounded-full border-2 border-ink/80 bg-white px-4 py-1.5 font-heading text-sm font-bold text-ink shadow-card">
-            {personal.portfolioYear}
-          </span>
+    <section
+      id="home"
+      className="relative overflow-hidden bg-charcoal px-6 pb-16 pt-28 sm:px-10 sm:pt-32"
+    >
+      <div className="mx-auto max-w-6xl">
+        <div className="flex items-start justify-between text-xs font-bold uppercase tracking-widest text-grey">
+          <span>01</span>
+          <span className="hidden sm:inline">@nithish.r</span>
+        </div>
 
-          <h1 className="section-heading animate-fade-up text-6xl leading-[0.95] tracking-tight text-ink sm:text-7xl lg:text-8xl">
-            {personal.name}
+        <div className="relative mt-6">
+          <h1 className="display-heading animate-fade-up select-none text-center text-[15vw] text-cream sm:text-[13vw] lg:text-[9rem]">
+            Portfolio
           </h1>
 
-          <p className="animate-fade-up mt-5 text-base font-semibold uppercase tracking-wide text-ink-soft sm:text-lg">
-            {personal.title}
-          </p>
+          <div className="animate-fade-up pointer-events-none absolute inset-x-0 bottom-0 mx-auto flex justify-center">
+            <img
+              src={profilePhoto}
+              alt={personal.name}
+              className="photo-mono h-[38vw] max-h-80 w-auto object-contain sm:h-[26vw] lg:h-72"
+              style={{
+                WebkitMaskImage:
+                  "radial-gradient(ellipse 62% 78% at 50% 42%, black 55%, transparent 96%)",
+                maskImage:
+                  "radial-gradient(ellipse 62% 78% at 50% 42%, black 55%, transparent 96%)",
+              }}
+            />
+          </div>
+        </div>
 
-          <p className="animate-fade-up mt-4 max-w-xl text-sm italic leading-relaxed text-ink-soft sm:text-base">
-            &ldquo;{personal.tagline}&rdquo;
-          </p>
+        <div className="animate-fade-up mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="display-heading text-2xl text-cream sm:text-3xl">{personal.name}</p>
+            <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-grey">
+              {personal.title}
+            </p>
+          </div>
 
-          <div className="animate-fade-up mt-6 flex flex-wrap justify-center gap-2">
-            {personal.focus.map((item) => (
-              <span
-                key={item}
-                className="rounded-full border border-ink/15 px-3.5 py-1.5 text-xs font-semibold text-ink-soft"
-              >
-                {item}
-              </span>
-            ))}
+          <div className="flex flex-col gap-2 text-sm text-grey sm:items-end">
+            <a
+              href={`tel:${personal.phone}`}
+              className="flex items-center gap-2 transition-colors hover:text-cream sm:flex-row-reverse"
+            >
+              <Phone size={13} />
+              {personal.phone}
+            </a>
+            <a
+              href={`mailto:${personal.email}`}
+              className="flex items-center gap-2 transition-colors hover:text-cream sm:flex-row-reverse"
+            >
+              <Mail size={13} />
+              {personal.email}
+            </a>
           </div>
         </div>
       </div>
-
-      <TornEdge color="#242428" />
     </section>
   );
 }
