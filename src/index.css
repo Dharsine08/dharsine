@@ -1,24 +1,24 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --font-heading: "Poppins", system-ui, sans-serif;
+  --font-heading: "Fraunces", "Georgia", serif;
   --font-body: "Inter", system-ui, sans-serif;
 
-  --color-bg: #202126;
-  --color-bg-soft: #28292f;
-  --color-bg-card: #2c2d34;
-  --color-green: #45e6a0;
-  --color-green-dim: rgba(69, 230, 160, 0.14);
-  --color-yellow: #ffc928;
-  --color-yellow-dark: #e6ac00;
-  --color-text: #f5f5f5;
-  --color-text-soft: #b5b6be;
-  --color-line: #3a3b42;
+  --color-green: #334c36;
+  --color-green-soft: #3d5941;
+  --color-cream: #f7efe2;
+  --color-cream-soft: #efe4d1;
+  --color-gold: #f1ac20;
+  --color-gold-text: #cca735;
+  --color-coral: #fb6332;
+  --color-black: #171512;
+  --color-ink: #241f18;
+  --color-ink-soft: #5c5344;
+  --color-line: #e3d8c3;
 
-  --shadow-card: 0 10px 30px -12px rgb(0 0 0 / 0.5);
-  --shadow-card-lg: 0 24px 60px -20px rgb(0 0 0 / 0.6);
-  --shadow-glow: 0 0 60px -10px rgba(69, 230, 160, 0.35);
+  --shadow-card: 0 10px 30px -14px rgb(23 21 18 / 0.25);
+  --shadow-card-lg: 0 24px 55px -18px rgb(23 21 18 / 0.35);
 }
 
 html {
@@ -28,8 +28,8 @@ html {
 body {
   margin: 0;
   font-family: var(--font-body);
-  color: var(--color-text);
-  background: var(--color-bg);
+  color: var(--color-ink);
+  background: var(--color-cream);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -39,18 +39,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::selection {
-  background: var(--color-green);
-  color: var(--color-bg);
+  background: var(--color-gold);
+  color: var(--color-black);
 }
 
 .section-heading {
   font-family: var(--font-heading);
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-weight: 700;
 }
 
-.glow-ring {
-  box-shadow: var(--shadow-glow);
+.pill-heading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-green);
+  color: var(--color-cream);
+  border-radius: 999px;
+  padding: 0.4rem 1.25rem;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 @keyframes fade-up {
@@ -68,15 +77,15 @@ h1, h2, h3, h4, h5, h6 {
   animation: fade-up 0.6s ease both;
 }
 
-@keyframes float-slow {
-  0%, 100% {
-    transform: translateY(0);
+@keyframes sparkle-spin {
+  from {
+    transform: rotate(0deg);
   }
-  50% {
-    transform: translateY(-10px);
+  to {
+    transform: rotate(360deg);
   }
 }
 
-.animate-float {
-  animation: float-slow 4s ease-in-out infinite;
+.animate-sparkle {
+  animation: sparkle-spin 6s linear infinite;
 }

@@ -1,50 +1,74 @@
-import { Megaphone, Users, Briefcase, MessageCircle, Download } from "lucide-react";
-import { highlightCards, whyWorkWithMe } from "../../data/resume";
+import { Mail, MapPin, Phone, Search } from "lucide-react";
+import Navbar from "../Navbar";
+import { aboutMe, languages, personal } from "../../data/resume";
+import profilePhoto from "../../assets/photo/profile.jpg";
 
-const icons = [Megaphone, Users, Briefcase, MessageCircle];
+interface AboutProps {
+  activeId: string;
+}
 
-export default function About() {
+function scrollToSection(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+}
+
+export default function About({ activeId }: AboutProps) {
   return (
-    <section id="about" className="bg-bg-soft px-6 py-20 md:px-10">
-      <div className="mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-5">
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:col-span-3">
-            {highlightCards.map((card, i) => {
-              const Icon = icons[i % icons.length];
-              return (
-                <div
-                  key={card.title}
-                  className="group rounded-2xl border border-line bg-bg-card p-6 shadow-card transition-all hover:-translate-y-1 hover:border-green/50"
-                >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-green-dim text-green">
-                    <Icon size={20} />
-                  </span>
-                  <h3 className="mt-4 font-bold text-text">{card.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-text-soft">
-                    {card.description}
-                  </p>
-                </div>
-              );
-            })}
+    <section id="about" className="bg-cream">
+      <Navbar activeId={activeId} variant="light" />
+
+      <div className="mx-auto max-w-6xl px-6 pb-20 pt-6 sm:px-10">
+        <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
+          <div className="animate-fade-up">
+            <h2 className="section-heading text-5xl leading-[1.05] text-ink sm:text-6xl">
+              Hello,
+              <br />
+              I'm {personal.firstName}!
+            </h2>
+            <p className="mt-6 max-w-md leading-relaxed text-ink-soft">{aboutMe}</p>
+
+            <button
+              type="button"
+              onClick={() => scrollToSection("contact")}
+              className="mt-8 flex w-fit items-center gap-3 rounded-full bg-coral px-6 py-3.5 text-sm font-bold text-white shadow-card transition-transform hover:-translate-y-0.5"
+            >
+              <Search size={16} />
+              Get in touch
+            </button>
           </div>
 
-          <div className="lg:col-span-2">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-green">
-              My Profile
-            </p>
-            <h2 className="section-heading mt-2 text-3xl text-text sm:text-4xl">
-              Why Work With Me?
-            </h2>
-            <p className="mt-5 leading-relaxed text-text-soft">{whyWorkWithMe}</p>
+          <div className="relative mx-auto mb-20 w-full max-w-xs animate-fade-up sm:mb-16 sm:max-w-sm">
+            <div className="absolute -inset-x-6 top-8 bottom-8 -z-10 rounded-lg bg-green" />
+            <div className="overflow-hidden rounded-lg shadow-card-lg">
+              <img
+                src={profilePhoto}
+                alt={personal.name}
+                className="aspect-[3/4] w-full object-cover"
+              />
+            </div>
 
-            <a
-              href="/resume/Franklin_S_Resume.pdf"
-              download
-              className="mt-7 inline-flex items-center gap-2 rounded-full bg-yellow px-6 py-3 text-sm font-bold text-bg transition-transform hover:-translate-y-0.5"
-            >
-              <Download size={16} />
-              Download Resume
-            </a>
+            {languages[0] && (
+              <span className="absolute -right-4 top-10 rounded-full bg-gold px-4 py-2 text-xs font-bold text-black shadow-card sm:right-[-2rem]">
+                {languages[0]}
+              </span>
+            )}
+
+            <div className="absolute -bottom-8 left-1/2 w-[calc(100%+2rem)] -translate-x-1/2 rounded-xl bg-black p-5 text-white shadow-card-lg sm:w-[110%]">
+              <p className="section-heading mb-3 text-lg font-bold">Contact</p>
+              <div className="flex flex-col gap-2 text-xs text-white/80">
+                <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection("contact"); }} className="flex items-center gap-2 hover:text-white">
+                  <MapPin size={13} className="text-gold" />
+                  {personal.location}
+                </a>
+                <a href={`mailto:${personal.email}`} className="flex items-center gap-2 hover:text-white">
+                  <Mail size={13} className="text-gold" />
+                  <span className="break-all">{personal.email}</span>
+                </a>
+                <a href={`tel:${personal.phone}`} className="flex items-center gap-2 hover:text-white">
+                  <Phone size={13} className="text-gold" />
+                  {personal.phone}
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

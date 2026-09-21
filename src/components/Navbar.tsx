@@ -1,17 +1,23 @@
 import { useState } from "react";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowRight, Sparkle } from "lucide-react";
 import { navSections } from "../data/sections";
+import { personal } from "../data/resume";
 
 interface NavbarProps {
   activeId: string;
+  variant: "dark" | "light";
 }
 
 function scrollToSection(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 }
 
-export default function Navbar({ activeId }: NavbarProps) {
+export default function Navbar({ activeId, variant }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const isDark = variant === "dark";
+
+  const textColor = isDark ? "text-cream" : "text-ink";
+  const mutedColor = isDark ? "text-cream/70" : "text-ink-soft";
 
   const handleNavClick = (id: string) => {
     scrollToSection(id);
@@ -19,31 +25,29 @@ export default function Navbar({ activeId }: NavbarProps) {
   };
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 border-b border-line/70 bg-bg/85 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10">
+    <div className="relative z-30 px-6 py-5 sm:px-10">
+      <div className="mx-auto flex max-w-6xl items-center justify-between">
         <button
           type="button"
-          onClick={() => handleNavClick("home")}
-          className="font-heading text-lg font-extrabold tracking-tight text-text"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className={`flex items-center gap-2 font-heading text-base font-bold ${textColor}`}
         >
-          FRANKLIN<span className="text-green">.</span>
+          <Sparkle size={16} className="text-gold" fill="currentColor" />
+          {personal.name}
         </button>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Primary navigation">
-          {navSections.map(({ id, label }) => (
+        <nav className="hidden items-center gap-7 sm:flex" aria-label="Primary navigation">
+          {navSections.slice(0, -1).map(({ id, label }) => (
             <button
               key={id}
               type="button"
               onClick={() => handleNavClick(id)}
               aria-current={activeId === id ? "true" : undefined}
-              className={`relative text-sm font-semibold transition-colors ${
-                activeId === id ? "text-text" : "text-text-soft hover:text-text"
-              }`}
+              className={`text-sm font-semibold transition-colors ${
+                activeId === id ? textColor : mutedColor
+              } ${isDark ? "hover:text-cream" : "hover:text-ink"}`}
             >
               {label}
-              {activeId === id && (
-                <span className="absolute -bottom-1.5 left-0 h-0.5 w-full rounded-full bg-green" />
-              )}
             </button>
           ))}
         </nav>
@@ -52,17 +56,18 @@ export default function Navbar({ activeId }: NavbarProps) {
           <button
             type="button"
             onClick={() => handleNavClick("contact")}
-            className="hidden items-center gap-1.5 rounded-full bg-yellow px-5 py-2.5 text-sm font-bold text-bg transition-transform hover:-translate-y-0.5 sm:inline-flex"
+            className="hidden items-center gap-1.5 rounded-full bg-gold px-5 py-2.5 text-sm font-bold text-black transition-transform hover:-translate-y-0.5 sm:inline-flex"
           >
-            Contact Me
-            <ArrowUpRight size={15} />
+            Get in touch!
           </button>
           <button
             type="button"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
             onClick={() => setMobileOpen((open) => !open)}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-text md:hidden"
+            className={`flex h-10 w-10 items-center justify-center rounded-full border ${
+              isDark ? "border-cream/30 text-cream" : "border-ink/20 text-ink"
+            } sm:hidden`}
           >
             {mobileOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
@@ -71,36 +76,24 @@ export default function Navbar({ activeId }: NavbarProps) {
 
       {mobileOpen && (
         <nav
-          className="animate-fade-up border-t border-line/70 bg-bg px-6 pb-5 md:hidden"
+          className={`animate-fade-up mt-4 flex flex-col gap-1 rounded-2xl p-4 sm:hidden ${
+            isDark ? "bg-black/30" : "bg-black/5"
+          }`}
           aria-label="Mobile navigation"
         >
-          <ul className="flex flex-col gap-1 pt-3">
-            {navSections.map(({ id, label }) => (
-              <li key={id}>
-                <button
-                  type="button"
-                  onClick={() => handleNavClick(id)}
-                  className={`flex w-full items-center rounded-lg px-3 py-2.5 text-left font-semibold transition-colors ${
-                    activeId === id ? "bg-bg-soft text-green" : "text-text-soft hover:text-text"
-                  }`}
-                >
-                  {label}
-                </button>
-              </li>
-            ))}
-            <li className="pt-2">
-              <button
-                type="button"
-                onClick={() => handleNavClick("contact")}
-                className="flex w-full items-center justify-center gap-1.5 rounded-full bg-yellow px-5 py-2.5 text-sm font-bold text-bg"
-              >
-                Contact Me
-                <ArrowUpRight size={15} />
-              </button>
-            </li>
-          </ul>
+          {navSections.map(({ id, label }) => (
+            <button
+              key={id}
+              type="button"
+              onClick={() => handleNavClick(id)}
+              className={`flex items-center justify-between rounded-lg px-3 py-2.5 text-left font-semibold ${textColor}`}
+            >
+              {label}
+              <ArrowRight size={15} />
+            </button>
+          ))}
         </nav>
       )}
-    </header>
+    </div>
   );
 }

@@ -1,11 +1,18 @@
-# Franklin S. — Personal Portfolio
+# Dharsine S. — Personal Portfolio (Editorial variant)
 
-A premium, responsive personal portfolio website for **Franklin S.**, an
-MBA student and B.Com graduate with a completed Digital Marketing course.
-Built with React, Vite, TypeScript, Tailwind CSS, and Lucide icons, in a
-dark charcoal design with neon-green accents and yellow CTA buttons,
-inspired by a modern creative-portfolio layout reference (sticky top nav,
-circular glowing profile visual, card-based sections).
+A premium, responsive personal portfolio website for **Dharsine S.**, an
+MBA student with a B.Tech IT background. Built with React, Vite,
+TypeScript, Tailwind CSS, and Lucide icons, in a dark green / cream /
+gold / coral editorial design inspired by a bold one-page portfolio
+reference (giant stacked name in the hero, duotone-treated photo blocks,
+pill-shaped section labels, a dark green resume block, warm cream content
+sections).
+
+> **Note:** this is a second design variant for Dharsine S. — a separate,
+> blue/black/white sidebar-style version also exists on the
+> `claude/dharsine-portfolio` branch of this repository, built from an
+> earlier reference image. Both use the same real resume content; only
+> the visual design differs.
 
 ## Tech stack
 
@@ -35,85 +42,73 @@ npm run lint      # run oxlint
 
 ```
 src/
-  assets/photo/profile.jpg      # profile photo used in hero
+  assets/photo/profile.jpg      # profile photo used in the hero and about section
   components/
-    Navbar.tsx                  # sticky top nav w/ active-section indicator + mobile menu
-    Footer.tsx                  # nav links, dynamic copyright year, back-to-top
+    Navbar.tsx                  # reusable nav bar (dark variant in hero, light variant in About), scroll-spy aware
+    Footer.tsx                  # name/title, dynamic copyright year, back-to-top
     sections/
-      Hero.tsx                  # circular glow ring + floating labels
-      About.tsx                 # highlight cards + "Why Work With Me"
-      Resume.tsx                # education timeline, career focus, strengths
-      Skills.tsx                # categorized skills dashboard
-      FeaturedProject.tsx       # academic project editorial layout
-      Portfolio.tsx             # filterable placeholder project gallery
-      Certification.tsx         # certification highlight card
-      WhatIBring.tsx            # personal-strength cards
-      Contact.tsx                # validated contact form + contact details
+      Hero.tsx                   # giant stacked name, duotone photo, focus tags, scroll-down button
+      About.tsx                  # "Hello, I'm Dharsine!" + photo w/ contact card overlay
+      ResumeBlock.tsx             # dark green block: Education timeline + Leadership + Technical Skills
+      Projects.tsx                 # 3 project cards, Water Tracking System featured
+      Certification.tsx            # certification cards + internship card
+      Strengths.tsx                 # "My Strengths" tag cards
+      LanguagesAchievements.tsx      # Language list + Achievements grid (two-column, like the reference)
+      Contact.tsx                    # validated contact form + contact details
   data/
-    resume.ts                   # ALL editable content: bio, skills, project, portfolio items, contact
-    sections.ts                 # nav items (id, label)
+    resume.ts                    # ALL editable content: bio, education, projects, skills, etc.
+    sections.ts                  # nav items (id, label)
   hooks/
-    useActiveSection.ts         # IntersectionObserver-based scroll-spy for nav highlighting
+    useActiveSection.ts          # IntersectionObserver-based scroll-spy for nav highlighting
   App.tsx
-  index.css                     # Tailwind import + dark theme design tokens
+  index.css                      # Tailwind import + green/cream/gold/coral design tokens, Fraunces + Inter fonts
 public/
-  resume/                       # put your resume PDF here (see below)
+  resume/                        # put your resume PDF here (see below)
 ```
 
 ## Content accuracy note
 
-`src/data/resume.ts` is the single source of truth for all content. Most
-fields (education, certification, career focus, skills, strengths,
-academic project details) come directly from the brief supplied for this
-build. Two things are explicit, clearly-labelled placeholders because no
-resume PDF text, email, phone, or LinkedIn URL was actually accessible
-while building this project — only a design reference image and a
-profile photo were available:
-
-- `personal.email`, `personal.phone`, `personal.linkedin` — replace with
-  your real contact details (`emailIsPlaceholder` / `phoneIsPlaceholder`
-  flags drive the "Add yours" badges on the Contact section; set them to
-  `false` once you fill in real values).
-- `whyWorkWithMe` — drafted from the bullet points in the brief; check it
-  against your actual resume wording and adjust as needed.
-
-Nothing else (institutions, degree status, certification, skills,
-strengths, the academic project's scope) was invented.
+`src/data/resume.ts` is the single source of truth for all content.
+Every field — contact details, education, projects, certifications, the
+internship, skills, leadership experience, languages, and achievements —
+comes directly from the brief supplied for this build. Nothing was
+invented. In particular, unlike the visual reference this design is
+based on, this site does **not** include a LinkedIn/social pill, a
+birthdate tag, or language-proficiency labels ("Fluent"/"Native"), or a
+Hobbies & Interests section — none of that was part of Dharsine's actual
+resume content, so those decorative reference elements were either
+dropped or replaced with resume-accurate equivalents (e.g. the "Language"
+pill in the About photo uses one of her two actual languages, and the
+reference's "Experience" block became "Leadership Experience" since no
+paid work experience beyond the internship was listed).
 
 ## Replacing the profile photo
 
 Swap `src/assets/photo/profile.jpg` with your own image (same filename,
-or update the `import profilePhoto from "../assets/photo/profile.jpg"`
-line in `Hero.tsx` if you rename it). A square or near-square portrait
-works best for the circular glow ring in the hero.
+or update the two `import profilePhoto from "../assets/photo/profile.jpg"`
+lines in `Hero.tsx` and `About.tsx` if you rename it). A 3:4 portrait
+works best for the color-block photo treatment.
 
 ## Connecting the resume PDF download
 
-The "Download Resume" button links to `/resume/Franklin_S_Resume.pdf`.
-Add your actual resume PDF to `public/resume/` with that exact filename
-and the button will start serving it — no code changes needed. See
-`public/resume/README.md` for details.
+Add a "Download Resume" link wherever you'd like it (e.g. next to the
+"Get in touch!" button in `Navbar.tsx`, or in `ResumeBlock.tsx`) pointing
+to `/resume/Dharsine_S_Resume.pdf`, and add your actual resume PDF to
+`public/resume/` with that exact filename. See `public/resume/README.md`
+for details.
 
-## Updating portfolio projects
+## Adding project screenshots and links
 
-Edit the `portfolioItems` array in `src/data/resume.ts`. Each entry needs:
+Each project in `Projects.tsx` currently shows an icon placeholder
+instead of a screenshot, since none were supplied. To add real visuals or
+links:
 
-```ts
-{
-  id: "unique-id",
-  title: "Project Title",
-  description: "Short description.",
-  category: "Academic" | "Marketing" | "Business",
-  isPlaceholder: false, // set false once it's a real project
-}
-```
-
-To link a real project, extend the `Portfolio.tsx` card to wrap the
-"View Project" button in an `<a href="...">`, or add a `link` field to
-the data type and item. The same applies to `featuredProject` in
-`resume.ts` — set `hasViewableDocument: true` and wire the button in
-`FeaturedProject.tsx` once you have an actual document/presentation to
-link to.
+1. Add project images under `src/assets/` and import them in `Projects.tsx`,
+   replacing the icon block with an `<img>`.
+2. To link to a live demo or repo, add a `link` field to the `Project`
+   type and `projects` array in `src/data/resume.ts`, then add a "View
+   Project" button wrapped in an `<a href={project.link}>` — only once a
+   real link exists.
 
 ## Connecting the contact form
 
