@@ -1,86 +1,50 @@
-import {
-  GraduationCap,
-  TrendingUp,
-  Zap,
-  Users,
-  ClipboardList,
-  MessageCircle,
-  Lightbulb,
-} from "lucide-react";
-import { aboutHighlights, personal, whatIBring } from "../../data/resume";
+import { Megaphone, Users, Briefcase, MessageCircle, Download } from "lucide-react";
+import { highlightCards, whyWorkWithMe } from "../../data/resume";
 
-const highlightIcons = [GraduationCap, TrendingUp, Zap, Users];
-const bringIcons = [ClipboardList, MessageCircle, Lightbulb];
+const icons = [Megaphone, Users, Briefcase, MessageCircle];
 
 export default function About() {
   return (
-    <section id="about" className="bg-paper-muted px-6 py-20 md:px-16">
+    <section id="about" className="bg-bg-soft px-6 py-20 md:px-10">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-12 max-w-2xl">
-          <p className="text-sm font-bold uppercase tracking-widest text-gold-dark">
-            Get To Know Me
-          </p>
-          <h2 className="section-heading mt-2 text-3xl text-ink sm:text-4xl">
-            About Me
-          </h2>
-        </div>
-
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-5">
-          <div className="lg:col-span-3">
-            <p className="text-lg font-semibold text-ink">
-              I'm {personal.name}, {personal.title.replace(" | ", " and ")}.
-            </p>
-            <p className="mt-4 leading-relaxed text-ink-soft">
-              {personal.intro} I enjoy planning things carefully, working
-              well within a team, and staying open to new ideas — qualities
-              I hope to sharpen further through an MBA and a career in
-              business management.
-            </p>
-
-            <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-              {aboutHighlights.map((item, i) => {
-                const Icon = highlightIcons[i % highlightIcons.length];
-                return (
-                  <div
-                    key={item.label}
-                    className="flex flex-col items-center gap-2 rounded-2xl border border-line bg-paper px-3 py-5 text-center shadow-card"
-                  >
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gold-soft text-ink">
-                      <Icon size={18} />
-                    </span>
-                    <span className="text-xs font-bold leading-snug text-ink">
-                      {item.label}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:col-span-3">
+            {highlightCards.map((card, i) => {
+              const Icon = icons[i % icons.length];
+              return (
+                <div
+                  key={card.title}
+                  className="group rounded-2xl border border-line bg-bg-card p-6 shadow-card transition-all hover:-translate-y-1 hover:border-green/50"
+                >
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-green-dim text-green">
+                    <Icon size={20} />
+                  </span>
+                  <h3 className="mt-4 font-bold text-text">{card.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-text-soft">
+                    {card.description}
+                  </p>
+                </div>
+              );
+            })}
           </div>
 
           <div className="lg:col-span-2">
-            <div className="rounded-3xl bg-ink p-8 text-white shadow-card-lg">
-              <h3 className="section-heading text-lg text-gold">
-                What I Bring
-              </h3>
-              <div className="mt-6 flex flex-col gap-5">
-                {whatIBring.map((item, i) => {
-                  const Icon = bringIcons[i % bringIcons.length];
-                  return (
-                    <div key={item.title} className="flex gap-4">
-                      <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gold text-ink">
-                        <Icon size={16} />
-                      </span>
-                      <div>
-                        <p className="font-bold">{item.title}</p>
-                        <p className="mt-1 text-sm leading-relaxed text-white/70">
-                          {item.description}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-green">
+              My Profile
+            </p>
+            <h2 className="section-heading mt-2 text-3xl text-text sm:text-4xl">
+              Why Work With Me?
+            </h2>
+            <p className="mt-5 leading-relaxed text-text-soft">{whyWorkWithMe}</p>
+
+            <a
+              href="/resume/Franklin_S_Resume.pdf"
+              download
+              className="mt-7 inline-flex items-center gap-2 rounded-full bg-yellow px-6 py-3 text-sm font-bold text-bg transition-transform hover:-translate-y-0.5"
+            >
+              <Download size={16} />
+              Download Resume
+            </a>
           </div>
         </div>
       </div>

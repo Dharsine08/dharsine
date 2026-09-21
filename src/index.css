@@ -5,18 +5,20 @@
   --font-heading: "Poppins", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
 
-  --color-ink: #17171a;
-  --color-ink-soft: #4a4a52;
-  --color-paper: #ffffff;
-  --color-paper-muted: #f4f4f2;
-  --color-paper-dim: #ececea;
-  --color-gold: #f5b301;
-  --color-gold-dark: #d99900;
-  --color-gold-soft: #fdecc0;
-  --color-line: #e4e3e0;
+  --color-bg: #202126;
+  --color-bg-soft: #28292f;
+  --color-bg-card: #2c2d34;
+  --color-green: #45e6a0;
+  --color-green-dim: rgba(69, 230, 160, 0.14);
+  --color-yellow: #ffc928;
+  --color-yellow-dark: #e6ac00;
+  --color-text: #f5f5f5;
+  --color-text-soft: #b5b6be;
+  --color-line: #3a3b42;
 
-  --shadow-card: 0 10px 30px -12px rgb(0 0 0 / 0.15);
-  --shadow-card-lg: 0 24px 60px -20px rgb(0 0 0 / 0.25);
+  --shadow-card: 0 10px 30px -12px rgb(0 0 0 / 0.5);
+  --shadow-card-lg: 0 24px 60px -20px rgb(0 0 0 / 0.6);
+  --shadow-glow: 0 0 60px -10px rgba(69, 230, 160, 0.35);
 }
 
 html {
@@ -26,8 +28,8 @@ html {
 body {
   margin: 0;
   font-family: var(--font-body);
-  color: var(--color-ink);
-  background: var(--color-paper);
+  color: var(--color-text);
+  background: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -37,28 +39,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::selection {
-  background: var(--color-gold);
-  color: var(--color-ink);
-}
-
-/* grayscale photo treatment, softened to color on hover */
-.photo-mono {
-  filter: grayscale(100%) contrast(1.05);
-  transition: filter 0.5s ease;
-}
-.photo-mono:hover {
-  filter: grayscale(20%) contrast(1.05);
+  background: var(--color-green);
+  color: var(--color-bg);
 }
 
 .section-heading {
   font-family: var(--font-heading);
   font-weight: 800;
   letter-spacing: -0.02em;
-  text-transform: uppercase;
 }
 
-.nav-link-active {
-  color: var(--color-ink);
+.glow-ring {
+  box-shadow: var(--shadow-glow);
 }
 
 @keyframes fade-up {
@@ -74,4 +66,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .animate-fade-up {
   animation: fade-up 0.6s ease both;
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float-slow 4s ease-in-out infinite;
 }
