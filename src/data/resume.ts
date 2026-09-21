@@ -1,203 +1,155 @@
 /**
  * Single source of truth for all resume/portfolio content.
  *
- * PLACEHOLDER NOTICE:
- * A resume PDF was referenced when this site was requested, but only two
- * images (a design reference and a profile photo) were actually available
- * while building this project — no resume PDF text was accessible, and no
- * email, phone, or LinkedIn URL was supplied anywhere in the brief. Per
- * the "never fabricate contact details" instruction, `personal.email`,
- * `personal.phone`, and `personal.linkedin` below are explicit,
- * clearly-labelled placeholders — replace them with your real details
- * before publishing. The `whyWorkWithMe` paragraph was drafted from the
- * bullet points supplied in the brief; everything else (education,
- * certification, skills, strengths, project details) is taken directly
- * from what was supplied.
+ * All fields below come directly from the brief supplied for this build
+ * (personal details, education, projects, certifications, internship,
+ * skills, leadership experience, and achievements). Nothing has been
+ * invented — where the brief didn't specify something (e.g. an MBA
+ * institution or graduation date, project technology stacks, project
+ * links), it is intentionally left out rather than guessed.
  */
 
 export const personal = {
-  name: "Franklin S.",
-  firstName: "Franklin",
-  title: "MBA Student | B.Com Graduate | Digital Marketing",
-  // TODO(resume): replace with your real email — not supplied in the brief.
-  email: "your.email@example.com",
-  emailIsPlaceholder: true,
-  // TODO(resume): replace with your real phone number — not supplied in the brief.
-  phone: "+91 XXXXX XXXXX",
-  phoneIsPlaceholder: true,
-  // TODO(resume): add your real LinkedIn profile URL, if you have one.
-  linkedin: "",
+  name: "Dharsine S.",
+  firstName: "Dharsine",
+  title: "MBA Student | Business & Marketing Enthusiast",
+  focus: ["Business Management", "Marketing", "Technology", "Entrepreneurship"],
+  email: "skdharshu08@gmail.com",
+  phone: "9944027750",
+  location: "Rahman Nagar, MC Road, Thanjavur",
   intro:
-    "I'm a motivated MBA student and B.Com graduate with a completed Digital Marketing course. I'm interested in marketing, business development, consumer behaviour, and digital business, with a strong willingness to learn and contribute in a professional environment.",
+    "Motivated MBA student with a B.Tech IT background, strong communication, teamwork, adaptability, and problem-solving skills. Interested in management, entrepreneurship, and strategic decision-making, with a passion for learning and creating meaningful business impact.",
 };
 
-// TODO(resume): polish further once you can compare against your resume's exact wording.
-export const whyWorkWithMe =
-  "I'm a motivated MBA student building on a completed B.Com degree and a Digital Marketing course, with a genuine interest in how businesses understand and serve their customers. My academic work has given me practical exposure to consumer behaviour, market research, and digital platforms, and I bring that curiosity — along with clear communication, teamwork, and a strong willingness to learn — to every new challenge. I haven't held a professional role yet, but I'm eager to apply what I've learned and keep growing in a business or marketing environment.";
+export const aboutMe =
+  "Motivated MBA student with strong communication, teamwork, adaptability, and problem-solving skills. Interested in management, entrepreneurship, and strategic decision-making, with a passion for learning and creating meaningful business impact.";
 
-export const highlightCards = [
-  {
-    title: "Digital Marketing",
-    description:
-      "Knowledge of digital marketing concepts, online marketing strategies, and digital platforms.",
-  },
-  {
-    title: "Consumer Behaviour",
-    description:
-      "Academic exposure to consumer preferences, satisfaction, and customer expectations.",
-  },
-  {
-    title: "Business Management",
-    description:
-      "Interest in management concepts, business development, and professional growth.",
-  },
-  {
-    title: "Communication & Teamwork",
-    description:
-      "Strong communication skills and a collaborative, team-oriented approach to work.",
-  },
+export const technicalSkills = [
+  "HTML and CSS",
+  "React JS",
+  "Java and C++",
+  "Frontend Development",
+  "Backend Development",
+  "AWS",
+  "SQL",
+  "Web Designing",
+  "Poster Designing",
 ];
 
-export const education = [
-  {
-    degree: "MBA",
-    institution: "Gnanam School of Business",
-    status: "Currently Pursuing",
-  },
-  {
-    degree: "B.Com",
-    institution: "St. Joseph's College",
-    status: "Completed",
-  },
+export const professionalSkills = [
+  "Observation",
+  "Decision Making",
+  "Communication",
+  "Creativity",
+  "Conflict Resolution",
+  "Leadership",
+  "Adaptability",
 ];
 
-export const certification = {
-  title: "Digital Marketing Course",
-  status: "Completed",
-  description:
-    "Knowledge of digital marketing concepts, online marketing strategies, and digital platforms.",
-};
+export const languages = ["Tamil", "English"];
 
-export const careerFocus = ["Marketing", "Business Management", "Digital Marketing"];
-
-export const personalStrengthsShort = [
-  "Quick learner and adaptable",
-  "Positive and professional attitude",
-  "Good communication and teamwork",
-  "Responsible and self-motivated",
-  "Willingness to learn new skills",
+export const leadershipExperience = [
+  "Department President",
+  "Class Representative",
+  "Sports House Captain",
+  "Event Coordinator",
+  "Project Lead",
 ];
 
-export const whatIBring = [
-  {
-    title: "Quick Learner",
-    description: "Picks up new concepts and tools quickly and applies them with confidence.",
-  },
-  {
-    title: "Adaptability",
-    description: "Comfortable adjusting to new environments, tasks, and expectations.",
-  },
-  {
-    title: "Positive Attitude",
-    description: "Approaches challenges with optimism and a professional mindset.",
-  },
-  {
-    title: "Communication",
-    description: "Communicates clearly and effectively across different situations.",
-  },
-  {
-    title: "Teamwork",
-    description: "Collaborates well with others toward shared goals.",
-  },
-  {
-    title: "Responsibility",
-    description: "Reliable and accountable in completing tasks.",
-  },
-  {
-    title: "Self-Motivation",
-    description: "Driven to improve and perform without needing constant supervision.",
-  },
-  {
-    title: "Willingness to Learn",
-    description: "Genuinely enjoys learning new skills and expanding my knowledge.",
-  },
-];
-
-export const skillCategories = [
-  {
-    category: "Marketing",
-    skills: ["Digital Marketing", "Marketing Fundamentals", "Consumer Behaviour", "Market Research"],
-  },
-  {
-    category: "Business",
-    skills: ["Business Communication", "Customer Relationship Management", "Presentation Skills"],
-  },
-  {
-    category: "Personal Effectiveness",
-    skills: ["Teamwork", "Problem Solving", "Time Management"],
-  },
-];
-
-export const featuredProject = {
-  title: "Consumer Satisfaction on Online Food Ordering Applications",
-  category: "Academic Project | Consumer Behaviour | Market Research",
-  overview:
-    "An academic project studying consumer preferences and experiences related to online food ordering applications.",
-  researchFocus:
-    "Examined the factors influencing customer satisfaction and expectations when using online food ordering platforms.",
-  keyAreasStudied: [
-    "Consumer preferences in online food ordering",
-    "Factors influencing customer satisfaction",
-    "Customer expectations from digital food platforms",
-    "Collection and analysis of consumer opinions and service experiences",
-  ],
-  learningOutcomes:
-    "Developed a practical understanding of consumer behaviour, digital services, and online business platforms.",
-  hasViewableDocument: false,
-};
-
-export type PortfolioCategory = "All" | "Academic" | "Marketing" | "Business";
-
-export interface PortfolioItem {
+export interface Project {
   id: string;
   title: string;
+  duration: string;
   description: string;
-  category: Exclude<PortfolioCategory, "All">;
-  isPlaceholder: boolean;
+  featured?: boolean;
 }
 
-// Editable gallery — update this array with real work as it's ready.
-export const portfolioItems: PortfolioItem[] = [
+export const projects: Project[] = [
   {
-    id: "academic-presentations",
-    title: "Academic Presentations",
+    id: "cafe-management-system",
+    title: "Cafe Management System",
+    duration: "2 Months",
     description:
-      "Placeholder for college seminars or presentations. Replace with your own project title, summary, and files.",
-    category: "Academic",
-    isPlaceholder: true,
+      "Streamlined order processing, inventory management, and cafe operations.",
   },
   {
-    id: "digital-marketing-projects",
-    title: "Digital Marketing Projects",
+    id: "hotel-management-system",
+    title: "Hotel Management System",
+    duration: "1 Month",
     description:
-      "Placeholder for a digital marketing campaign, plan, or coursework project you complete.",
-    category: "Marketing",
-    isPlaceholder: true,
+      "Integrated room reservations, guest services, and food ordering.",
   },
   {
-    id: "business-case-studies",
-    title: "Business Case Studies",
+    id: "water-tracking-system",
+    title: "Water Tracking System",
+    duration: "3 Months",
     description:
-      "Placeholder for a business case study or management analysis project.",
-    category: "Business",
-    isPlaceholder: true,
+      "Developed a frontend and backend system for real-time water monitoring and automated alerts.",
+    featured: true,
+  },
+];
+
+export interface EducationItem {
+  degree: string;
+  institution: string;
+  years: string;
+}
+
+export const education: EducationItem[] = [
+  {
+    degree: "B.Tech Information Technology",
+    institution: "Sri Krishna College of Technology, Coimbatore",
+    years: "2021 – 2025",
   },
   {
-    id: "marketing-research",
-    title: "Marketing Research",
-    description:
-      "Placeholder for a market research study, survey, or consumer analysis project.",
-    category: "Marketing",
-    isPlaceholder: true,
+    degree: "Higher Secondary Certificate (HSLC)",
+    institution: "Yagappa Matriculation Higher Secondary School, Thanjavur",
+    years: "2019 – 2020",
   },
+  {
+    degree: "Secondary School Leaving Certificate (SSLC)",
+    institution: "Monfort Anglo Indian Higher Secondary School, Yercaud",
+    years: "2017 – 2018",
+  },
+];
+
+export const certifications = [
+  {
+    title: "AWS Course",
+    provider: "GUVI, associated with IIT Madras",
+  },
+  {
+    title: "Introduction to Cyber Security",
+    provider: "Cisco",
+  },
+  {
+    title: "Product Management Interview Preparation",
+    provider: "GUVI, associated with IIT Madras",
+  },
+];
+
+export const internship = {
+  company: "NUCLE FAB",
+  note: "Completed an internship at NUCLE FAB during the 5th semester.",
+};
+
+export const achievements = [
+  "Participation in Smart India Hackathon.",
+  "Second position in Anna University.",
+  "Participation in NSS camp.",
+  "Women Basketball Tournament.",
+  "Best performance in Backend Development during course.",
+  "Participation in College Culturals.",
+  "Participated in technical and academic events, demonstrating teamwork and problem-solving skills.",
+];
+
+export const strengths = [
+  "Communication",
+  "Teamwork",
+  "Adaptability",
+  "Problem Solving",
+  "Leadership",
+  "Decision Making",
+  "Conflict Resolution",
+  "Creativity",
 ];

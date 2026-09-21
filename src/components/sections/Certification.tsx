@@ -1,25 +1,38 @@
-import { Award } from "lucide-react";
-import { certification } from "../../data/resume";
+import { BadgeCheck, Briefcase } from "lucide-react";
+import { certifications, internship } from "../../data/resume";
 
 export default function Certification() {
   return (
-    <section className="bg-bg px-6 py-16 md:px-10">
-      <div className="mx-auto max-w-6xl">
-        <div className="flex flex-col items-start gap-6 rounded-3xl border border-line bg-bg-card p-8 shadow-card-lg sm:flex-row sm:items-center sm:p-10">
-          <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-green-dim text-green">
-            <Award size={30} />
+    <section id="certification" className="bg-bg-soft px-6 py-16 sm:px-10">
+      <div className="mx-auto max-w-4xl">
+        <span className="pill-heading">Certification</span>
+
+        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-3">
+          {certifications.map((cert) => (
+            <div
+              key={cert.title}
+              className="flex flex-col items-start gap-3 rounded-2xl border border-line bg-bg p-5 shadow-card transition-transform hover:-translate-y-1"
+            >
+              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-blue/10 text-blue">
+                <BadgeCheck size={20} />
+              </span>
+              <p className="text-sm font-bold text-ink">{cert.title}</p>
+              <p className="text-xs text-ink-soft">{cert.provider}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-8 flex items-start gap-4 rounded-2xl border border-blue/20 bg-bg p-6 shadow-card">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-blue text-white">
+            <Briefcase size={20} />
           </span>
           <div>
-            <div className="flex flex-wrap items-center gap-3">
-              <h3 className="font-heading text-xl font-bold text-text">
-                {certification.title}
-              </h3>
-              <span className="rounded-full bg-green-dim px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-green">
-                {certification.status}
-              </span>
-            </div>
-            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-text-soft">
-              {certification.description}
+            <p className="text-xs font-bold uppercase tracking-wide text-blue">
+              Internship
+            </p>
+            <p className="mt-1 text-sm font-bold text-ink">{internship.company}</p>
+            <p className="mt-1 text-sm leading-relaxed text-ink-soft">
+              {internship.note}
             </p>
           </div>
         </div>

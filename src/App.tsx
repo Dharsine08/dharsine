@@ -1,13 +1,12 @@
-import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 import Hero from "./components/sections/Hero";
 import About from "./components/sections/About";
-import Resume from "./components/sections/Resume";
-import Skills from "./components/sections/Skills";
-import FeaturedProject from "./components/sections/FeaturedProject";
-import Portfolio from "./components/sections/Portfolio";
+import Projects from "./components/sections/Projects";
+import Education from "./components/sections/Education";
 import Certification from "./components/sections/Certification";
-import WhatIBring from "./components/sections/WhatIBring";
+import Achievements from "./components/sections/Achievements";
+import Strengths from "./components/sections/Strengths";
 import Contact from "./components/sections/Contact";
 import { navSections } from "./data/sections";
 import { useActiveSection } from "./hooks/useActiveSection";
@@ -18,20 +17,21 @@ function App() {
   const activeId = useActiveSection(sectionIds);
 
   return (
-    <div className="min-h-screen bg-bg">
-      <Navbar activeId={activeId} />
-      <main>
-        <Hero />
-        <About />
-        <Resume />
-        <Skills />
-        <FeaturedProject />
-        <Portfolio />
-        <Certification />
-        <WhatIBring />
-        <Contact />
-      </main>
-      <Footer />
+    <div className="flex min-h-screen flex-col bg-bg lg:flex-row">
+      <Sidebar activeId={activeId} />
+      <div className="flex min-w-0 flex-1 flex-col">
+        <main className="flex-1">
+          <Hero />
+          <About />
+          <Projects />
+          <Education />
+          <Certification />
+          <Achievements />
+          <Strengths />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 }
