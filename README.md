@@ -1,10 +1,11 @@
-# Pius Ronaldo A. — Personal Portfolio
+# Franklin S. — Personal Portfolio
 
-A modern, responsive personal portfolio website for **Pius Ronaldo A.**,
-B.Com graduate and aspiring MBA professional. Built with React, Vite,
-TypeScript, Tailwind CSS, and Lucide icons, in a yellow/charcoal design
-inspired by a business-portfolio layout reference (fixed sidebar nav,
-bold uppercase headings, monochrome profile photo, card-based sections).
+A premium, responsive personal portfolio website for **Franklin S.**, an
+MBA student and B.Com graduate with a completed Digital Marketing course.
+Built with React, Vite, TypeScript, Tailwind CSS, and Lucide icons, in a
+dark charcoal design with neon-green accents and yellow CTA buttons,
+inspired by a modern creative-portfolio layout reference (sticky top nav,
+circular glowing profile visual, card-based sections).
 
 ## Tech stack
 
@@ -34,51 +35,61 @@ npm run lint      # run oxlint
 
 ```
 src/
-  assets/photo/profile.jpg      # profile photo used in sidebar + hero
+  assets/photo/profile.jpg      # profile photo used in hero
   components/
-    Sidebar.tsx                 # fixed yellow sidebar (desktop) / hamburger menu (mobile)
+    Navbar.tsx                  # sticky top nav w/ active-section indicator + mobile menu
+    Footer.tsx                  # nav links, dynamic copyright year, back-to-top
     sections/
-      Hero.tsx
-      About.tsx
-      Resume.tsx
-      Skills.tsx
-      Portfolio.tsx
-      Achievements.tsx
-      Interests.tsx
-      Contact.tsx
+      Hero.tsx                  # circular glow ring + floating labels
+      About.tsx                 # highlight cards + "Why Work With Me"
+      Resume.tsx                # education timeline, career focus, strengths
+      Skills.tsx                # categorized skills dashboard
+      FeaturedProject.tsx       # academic project editorial layout
+      Portfolio.tsx             # filterable placeholder project gallery
+      Certification.tsx         # certification highlight card
+      WhatIBring.tsx            # personal-strength cards
+      Contact.tsx                # validated contact form + contact details
   data/
-    resume.ts                   # ALL editable content: name, skills, strengths, portfolio items, etc.
-    sections.ts                 # sidebar nav items (id, label, icon)
+    resume.ts                   # ALL editable content: bio, skills, project, portfolio items, contact
+    sections.ts                 # nav items (id, label)
   hooks/
     useActiveSection.ts         # IntersectionObserver-based scroll-spy for nav highlighting
   App.tsx
-  index.css                     # Tailwind import + design tokens (colors, fonts, shadows)
+  index.css                     # Tailwind import + dark theme design tokens
 public/
   resume/                       # put your resume PDF here (see below)
 ```
 
 ## Content accuracy note
 
-`src/data/resume.ts` is the single source of truth for all content. Every
-field there is either taken directly from the information supplied for
-this build, or — for `careerObjective` and `professionalSummary` only —
-drafted from that same brief and clearly marked with a `TODO(resume)`
-comment, since no resume PDF text was available while building this
-project. **Replace those two fields with your exact resume wording**
-before publishing. Nothing else (skills, strengths, contact info,
-achievements, education) was invented.
+`src/data/resume.ts` is the single source of truth for all content. Most
+fields (education, certification, career focus, skills, strengths,
+academic project details) come directly from the brief supplied for this
+build. Two things are explicit, clearly-labelled placeholders because no
+resume PDF text, email, phone, or LinkedIn URL was actually accessible
+while building this project — only a design reference image and a
+profile photo were available:
+
+- `personal.email`, `personal.phone`, `personal.linkedin` — replace with
+  your real contact details (`emailIsPlaceholder` / `phoneIsPlaceholder`
+  flags drive the "Add yours" badges on the Contact section; set them to
+  `false` once you fill in real values).
+- `whyWorkWithMe` — drafted from the bullet points in the brief; check it
+  against your actual resume wording and adjust as needed.
+
+Nothing else (institutions, degree status, certification, skills,
+strengths, the academic project's scope) was invented.
 
 ## Replacing the profile photo
 
 Swap `src/assets/photo/profile.jpg` with your own image (same filename,
 or update the `import profilePhoto from "../assets/photo/profile.jpg"`
-lines in `Sidebar.tsx` and `Hero.tsx` if you rename it). A 4:5 or square
-portrait photo works best — it's automatically rendered in grayscale via
-the `.photo-mono` CSS class in `src/index.css`.
+line in `Hero.tsx` if you rename it). A square or near-square portrait
+works best for the circular glow ring in the hero.
 
 ## Connecting the resume PDF download
 
-The "Download Resume" button links to `/resume/Pius_Ronaldo_A_Resume.pdf`.
+The "Download Resume" button links to `/resume/Franklin_S_Resume.pdf`.
 Add your actual resume PDF to `public/resume/` with that exact filename
 and the button will start serving it — no code changes needed. See
 `public/resume/README.md` for details.
@@ -92,14 +103,17 @@ Edit the `portfolioItems` array in `src/data/resume.ts`. Each entry needs:
   id: "unique-id",
   title: "Project Title",
   description: "Short description.",
-  category: "ACADEMIC" | "BUSINESS" | "PERSONAL DEVELOPMENT",
+  category: "Academic" | "Marketing" | "Business",
   isPlaceholder: false, // set false once it's a real project
 }
 ```
 
 To link a real project, extend the `Portfolio.tsx` card to wrap the
 "View Project" button in an `<a href="...">`, or add a `link` field to
-the data type and item.
+the data type and item. The same applies to `featuredProject` in
+`resume.ts` — set `hasViewableDocument: true` and wire the button in
+`FeaturedProject.tsx` once you have an actual document/presentation to
+link to.
 
 ## Connecting the contact form
 
