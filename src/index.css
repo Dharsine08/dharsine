@@ -1,23 +1,24 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --font-heading: "Poppins", system-ui, sans-serif;
+  --font-heading: "Fraunces", "Georgia", serif;
   --font-body: "Inter", system-ui, sans-serif;
 
-  --color-blue: #0645a8;
-  --color-blue-deep: #073b8a;
-  --color-blue-accent: #009fe3;
-  --color-sidebar: #191919;
-  --color-sidebar-soft: #232323;
-  --color-bg: #ffffff;
-  --color-bg-soft: #f4f5f7;
-  --color-ink: #222222;
-  --color-ink-soft: #6b6b6b;
-  --color-line: #e4e6eb;
+  --color-green: #334c36;
+  --color-green-soft: #3d5941;
+  --color-cream: #f7efe2;
+  --color-cream-soft: #efe4d1;
+  --color-gold: #f1ac20;
+  --color-gold-text: #cca735;
+  --color-coral: #fb6332;
+  --color-black: #171512;
+  --color-ink: #241f18;
+  --color-ink-soft: #5c5344;
+  --color-line: #e3d8c3;
 
-  --shadow-card: 0 10px 30px -14px rgb(6 69 168 / 0.2);
-  --shadow-card-lg: 0 24px 50px -18px rgb(6 69 168 / 0.3);
+  --shadow-card: 0 10px 30px -14px rgb(23 21 18 / 0.25);
+  --shadow-card-lg: 0 24px 55px -18px rgb(23 21 18 / 0.35);
 }
 
 html {
@@ -28,7 +29,7 @@ body {
   margin: 0;
   font-family: var(--font-body);
   color: var(--color-ink);
-  background: var(--color-bg);
+  background: var(--color-cream);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -38,27 +39,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::selection {
-  background: var(--color-blue);
-  color: #fff;
+  background: var(--color-gold);
+  color: var(--color-black);
 }
 
 .section-heading {
   font-family: var(--font-heading);
-  font-weight: 800;
-  letter-spacing: -0.01em;
+  font-weight: 700;
 }
 
 .pill-heading {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  border: 2px solid var(--color-blue);
-  color: var(--color-blue);
+  background: var(--color-green);
+  color: var(--color-cream);
   border-radius: 999px;
   padding: 0.4rem 1.25rem;
-  font-weight: 800;
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
@@ -75,4 +75,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .animate-fade-up {
   animation: fade-up 0.6s ease both;
+}
+
+@keyframes sparkle-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-sparkle {
+  animation: sparkle-spin 6s linear infinite;
 }

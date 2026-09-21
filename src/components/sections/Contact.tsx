@@ -57,49 +57,52 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="bg-bg px-6 py-16 sm:px-10">
-      <div className="mx-auto max-w-4xl">
-        <span className="pill-heading">Contact Me</span>
+    <section id="contact" className="bg-green px-6 py-20 text-cream sm:px-10">
+      <div className="mx-auto max-w-6xl">
+        <span className="pill-heading bg-gold text-black">Contact Me</span>
+        <h2 className="section-heading mt-4 text-4xl text-cream sm:text-5xl">
+          Let's talk
+        </h2>
 
-        <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-5">
+        <div className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-5">
           <div className="flex flex-col gap-4 lg:col-span-2">
             <a
               href={`mailto:${personal.email}`}
-              className="flex items-center gap-4 rounded-2xl border border-line bg-bg-soft px-5 py-4 transition-colors hover:border-blue/40"
+              className="flex items-center gap-4 rounded-2xl bg-cream/5 px-5 py-4 transition-colors hover:bg-cream/10"
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-blue text-white">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gold text-black">
                 <Mail size={18} />
               </span>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-ink-soft">
+                <p className="text-xs font-semibold uppercase tracking-wide text-cream/50">
                   Email
                 </p>
-                <p className="break-all font-bold text-ink">{personal.email}</p>
+                <p className="break-all font-bold text-cream">{personal.email}</p>
               </div>
             </a>
             <a
               href={`tel:${personal.phone}`}
-              className="flex items-center gap-4 rounded-2xl border border-line bg-bg-soft px-5 py-4 transition-colors hover:border-blue/40"
+              className="flex items-center gap-4 rounded-2xl bg-cream/5 px-5 py-4 transition-colors hover:bg-cream/10"
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-blue text-white">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gold text-black">
                 <Phone size={18} />
               </span>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-ink-soft">
+                <p className="text-xs font-semibold uppercase tracking-wide text-cream/50">
                   Phone
                 </p>
-                <p className="font-bold text-ink">{personal.phone}</p>
+                <p className="font-bold text-cream">{personal.phone}</p>
               </div>
             </a>
-            <div className="flex items-center gap-4 rounded-2xl border border-line bg-bg-soft px-5 py-4">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-blue text-white">
+            <div className="flex items-center gap-4 rounded-2xl bg-cream/5 px-5 py-4">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gold text-black">
                 <MapPin size={18} />
               </span>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-ink-soft">
+                <p className="text-xs font-semibold uppercase tracking-wide text-cream/50">
                   Location
                 </p>
-                <p className="font-bold text-ink">{personal.location}</p>
+                <p className="font-bold text-cream">{personal.location}</p>
               </div>
             </div>
           </div>
@@ -108,11 +111,11 @@ export default function Contact() {
             <form
               onSubmit={handleSubmit}
               noValidate
-              className="rounded-3xl border border-line bg-bg-soft p-6 shadow-card-lg sm:p-8"
+              className="rounded-3xl bg-cream p-6 text-ink shadow-card-lg sm:p-8"
             >
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="name" className="mb-1.5 block text-sm font-bold text-ink">
+                  <label htmlFor="name" className="mb-1.5 block text-sm font-bold">
                     Name
                   </label>
                   <input
@@ -120,14 +123,14 @@ export default function Contact() {
                     type="text"
                     value={values.name}
                     onChange={handleChange("name")}
-                    className="w-full rounded-lg border border-line bg-bg px-4 py-2.5 text-sm text-ink outline-none focus:border-blue"
+                    className="w-full rounded-lg border border-line bg-cream-soft px-4 py-2.5 text-sm outline-none focus:border-coral"
                   />
                   {errors.name && (
                     <p className="mt-1 text-xs font-semibold text-red-600">{errors.name}</p>
                   )}
                 </div>
                 <div>
-                  <label htmlFor="email" className="mb-1.5 block text-sm font-bold text-ink">
+                  <label htmlFor="email" className="mb-1.5 block text-sm font-bold">
                     Email
                   </label>
                   <input
@@ -135,7 +138,7 @@ export default function Contact() {
                     type="email"
                     value={values.email}
                     onChange={handleChange("email")}
-                    className="w-full rounded-lg border border-line bg-bg px-4 py-2.5 text-sm text-ink outline-none focus:border-blue"
+                    className="w-full rounded-lg border border-line bg-cream-soft px-4 py-2.5 text-sm outline-none focus:border-coral"
                   />
                   {errors.email && (
                     <p className="mt-1 text-xs font-semibold text-red-600">{errors.email}</p>
@@ -144,7 +147,7 @@ export default function Contact() {
               </div>
 
               <div className="mt-5">
-                <label htmlFor="subject" className="mb-1.5 block text-sm font-bold text-ink">
+                <label htmlFor="subject" className="mb-1.5 block text-sm font-bold">
                   Subject
                 </label>
                 <input
@@ -152,7 +155,7 @@ export default function Contact() {
                   type="text"
                   value={values.subject}
                   onChange={handleChange("subject")}
-                  className="w-full rounded-lg border border-line bg-bg px-4 py-2.5 text-sm text-ink outline-none focus:border-blue"
+                  className="w-full rounded-lg border border-line bg-cream-soft px-4 py-2.5 text-sm outline-none focus:border-coral"
                 />
                 {errors.subject && (
                   <p className="mt-1 text-xs font-semibold text-red-600">{errors.subject}</p>
@@ -160,7 +163,7 @@ export default function Contact() {
               </div>
 
               <div className="mt-5">
-                <label htmlFor="message" className="mb-1.5 block text-sm font-bold text-ink">
+                <label htmlFor="message" className="mb-1.5 block text-sm font-bold">
                   Message
                 </label>
                 <textarea
@@ -168,7 +171,7 @@ export default function Contact() {
                   rows={4}
                   value={values.message}
                   onChange={handleChange("message")}
-                  className="w-full rounded-lg border border-line bg-bg px-4 py-2.5 text-sm text-ink outline-none focus:border-blue"
+                  className="w-full rounded-lg border border-line bg-cream-soft px-4 py-2.5 text-sm outline-none focus:border-coral"
                 />
                 {errors.message && (
                   <p className="mt-1 text-xs font-semibold text-red-600">{errors.message}</p>
@@ -177,15 +180,15 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="mt-6 flex w-fit items-center gap-2 rounded-full bg-blue px-6 py-3 text-sm font-bold text-white transition-transform hover:-translate-y-0.5"
+                className="mt-6 flex w-fit items-center gap-2 rounded-full bg-coral px-6 py-3 text-sm font-bold text-white transition-transform hover:-translate-y-0.5"
               >
                 <Send size={16} />
                 Send Message
               </button>
 
               {status === "ready" && (
-                <div className="mt-5 flex gap-3 rounded-xl border border-blue/20 bg-blue/5 px-4 py-3 text-sm text-ink">
-                  <Info size={18} className="mt-0.5 shrink-0 text-blue" />
+                <div className="mt-5 flex gap-3 rounded-xl border border-green/20 bg-green/5 px-4 py-3 text-sm text-ink">
+                  <Info size={18} className="mt-0.5 shrink-0 text-green" />
                   <p>
                     This form isn't connected to a backend or email service
                     yet, so your message wasn't actually sent. To make it

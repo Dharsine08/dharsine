@@ -6,7 +6,8 @@
  * skills, leadership experience, and achievements). Nothing has been
  * invented — where the brief didn't specify something (e.g. an MBA
  * institution or graduation date, project technology stacks, project
- * links), it is intentionally left out rather than guessed.
+ * links, hobbies/interests, language proficiency levels, a LinkedIn or
+ * other social URL), it is intentionally left out rather than guessed.
  */
 
 export const personal = {
@@ -19,21 +20,56 @@ export const personal = {
   location: "Rahman Nagar, MC Road, Thanjavur",
   intro:
     "Motivated MBA student with a B.Tech IT background, strong communication, teamwork, adaptability, and problem-solving skills. Interested in management, entrepreneurship, and strategic decision-making, with a passion for learning and creating meaningful business impact.",
+  tagline:
+    "I approach problems in a structured, practical way and enjoy turning what I learn into meaningful business impact.",
 };
 
 export const aboutMe =
   "Motivated MBA student with strong communication, teamwork, adaptability, and problem-solving skills. Interested in management, entrepreneurship, and strategic decision-making, with a passion for learning and creating meaningful business impact.";
 
-export const technicalSkills = [
-  "HTML and CSS",
-  "React JS",
-  "Java and C++",
-  "Frontend Development",
-  "Backend Development",
-  "AWS",
-  "SQL",
-  "Web Designing",
-  "Poster Designing",
+export interface EducationItem {
+  degree: string;
+  institution: string;
+  years: string;
+}
+
+export const education: EducationItem[] = [
+  {
+    degree: "B.Tech Information Technology",
+    institution: "Sri Krishna College of Technology, Coimbatore",
+    years: "2021 – 2025",
+  },
+  {
+    degree: "Higher Secondary Certificate (HSLC)",
+    institution: "Yagappa Matriculation Higher Secondary School, Thanjavur",
+    years: "2019 – 2020",
+  },
+  {
+    degree: "Secondary School Leaving Certificate (SSLC)",
+    institution: "Monfort Anglo Indian Higher Secondary School, Yercaud",
+    years: "2017 – 2018",
+  },
+];
+
+export const leadershipExperience = [
+  "Department President",
+  "Class Representative",
+  "Sports House Captain",
+  "Event Coordinator",
+  "Project Lead",
+];
+
+export const leadershipTags = ["Leadership", "Decision Making", "Conflict Resolution", "Adaptability"];
+
+export const technicalSkillGroups = [
+  {
+    label: "Design & Frontend",
+    skills: ["HTML and CSS", "React JS", "Frontend Development", "Web Designing", "Poster Designing"],
+  },
+  {
+    label: "Backend & Cloud",
+    skills: ["Java and C++", "Backend Development", "AWS", "SQL"],
+  },
 ];
 
 export const professionalSkills = [
@@ -46,15 +82,9 @@ export const professionalSkills = [
   "Adaptability",
 ];
 
-export const languages = ["Tamil", "English"];
+export const professionalSkillTags = ["Observation", "Communication", "Creativity"];
 
-export const leadershipExperience = [
-  "Department President",
-  "Class Representative",
-  "Sports House Captain",
-  "Event Coordinator",
-  "Project Lead",
-];
+export const languages = ["Tamil", "English"];
 
 export interface Project {
   id: string;
@@ -86,30 +116,6 @@ export const projects: Project[] = [
     description:
       "Developed a frontend and backend system for real-time water monitoring and automated alerts.",
     featured: true,
-  },
-];
-
-export interface EducationItem {
-  degree: string;
-  institution: string;
-  years: string;
-}
-
-export const education: EducationItem[] = [
-  {
-    degree: "B.Tech Information Technology",
-    institution: "Sri Krishna College of Technology, Coimbatore",
-    years: "2021 – 2025",
-  },
-  {
-    degree: "Higher Secondary Certificate (HSLC)",
-    institution: "Yagappa Matriculation Higher Secondary School, Thanjavur",
-    years: "2019 – 2020",
-  },
-  {
-    degree: "Secondary School Leaving Certificate (SSLC)",
-    institution: "Monfort Anglo Indian Higher Secondary School, Yercaud",
-    years: "2017 – 2018",
   },
 ];
 

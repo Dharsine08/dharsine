@@ -6,8 +6,8 @@ const icons: LucideIcon[] = [MessageSquare, Users, Waves, Puzzle, Crown, GitBran
 
 export default function Strengths() {
   return (
-    <section className="bg-bg-soft px-6 py-16 sm:px-10">
-      <div className="mx-auto max-w-4xl">
+    <section className="bg-cream px-6 py-20 sm:px-10">
+      <div className="mx-auto max-w-6xl">
         <span className="pill-heading">My Strengths</span>
 
         <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
@@ -16,12 +16,12 @@ export default function Strengths() {
             return (
               <div
                 key={item}
-                className="flex flex-col items-center gap-2 rounded-2xl border border-line bg-bg px-4 py-6 text-center shadow-card transition-transform hover:-translate-y-1"
+                className="flex flex-col items-center gap-2 rounded-2xl border border-line bg-cream px-4 py-6 text-center shadow-card transition-transform hover:-translate-y-1"
               >
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-blue/10 text-blue">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-green/10 text-green">
                   <Icon size={20} />
                 </span>
-                <span className="text-sm font-bold text-ink">{item}</span>
+                <span className="section-heading text-sm font-bold text-ink">{item}</span>
               </div>
             );
           })}
