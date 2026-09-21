@@ -1,23 +1,17 @@
 import { useState } from "react";
-import { Menu, X, ArrowRight, Sparkle } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { navSections } from "../data/sections";
-import { personal } from "../data/resume";
 
 interface NavbarProps {
   activeId: string;
-  variant: "dark" | "light";
 }
 
 function scrollToSection(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 }
 
-export default function Navbar({ activeId, variant }: NavbarProps) {
+export default function Navbar({ activeId }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const isDark = variant === "dark";
-
-  const textColor = isDark ? "text-cream" : "text-ink";
-  const mutedColor = isDark ? "text-cream/70" : "text-ink-soft";
 
   const handleNavClick = (id: string) => {
     scrollToSection(id);
@@ -25,75 +19,68 @@ export default function Navbar({ activeId, variant }: NavbarProps) {
   };
 
   return (
-    <div className="relative z-30 px-6 py-5 sm:px-10">
-      <div className="mx-auto flex max-w-6xl items-center justify-between">
+    <header className="fixed top-0 inset-x-0 z-50 border-b border-black/5 bg-white/90 backdrop-blur-md">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5 sm:px-10">
         <button
           type="button"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className={`flex items-center gap-2 font-heading text-base font-bold ${textColor}`}
+          onClick={() => handleNavClick("home")}
+          className="section-heading text-base font-bold tracking-tight text-ink"
         >
-          <Sparkle size={16} className="text-gold" fill="currentColor" />
-          {personal.name}
+          Jerin<span className="text-blue">.</span>
         </button>
 
-        <nav className="hidden items-center gap-7 sm:flex" aria-label="Primary navigation">
-          {navSections.slice(0, -1).map(({ id, label }) => (
-            <button
-              key={id}
-              type="button"
-              onClick={() => handleNavClick(id)}
-              aria-current={activeId === id ? "true" : undefined}
-              className={`text-sm font-semibold transition-colors ${
-                activeId === id ? textColor : mutedColor
-              } ${isDark ? "hover:text-cream" : "hover:text-ink"}`}
-            >
-              {label}
-            </button>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-3">
-          <button
-            type="button"
-            onClick={() => handleNavClick("contact")}
-            className="hidden items-center gap-1.5 rounded-full bg-gold px-5 py-2.5 text-sm font-bold text-black transition-transform hover:-translate-y-0.5 sm:inline-flex"
-          >
-            Get in touch!
-          </button>
-          <button
-            type="button"
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileOpen}
-            onClick={() => setMobileOpen((open) => !open)}
-            className={`flex h-10 w-10 items-center justify-center rounded-full border ${
-              isDark ? "border-cream/30 text-cream" : "border-ink/20 text-ink"
-            } sm:hidden`}
-          >
-            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
-          </button>
-        </div>
-      </div>
-
-      {mobileOpen && (
-        <nav
-          className={`animate-fade-up mt-4 flex flex-col gap-1 rounded-2xl p-4 sm:hidden ${
-            isDark ? "bg-black/30" : "bg-black/5"
-          }`}
-          aria-label="Mobile navigation"
-        >
+        <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary navigation">
           {navSections.map(({ id, label }) => (
             <button
               key={id}
               type="button"
               onClick={() => handleNavClick(id)}
-              className={`flex items-center justify-between rounded-lg px-3 py-2.5 text-left font-semibold ${textColor}`}
+              aria-current={activeId === id ? "true" : undefined}
+              className={`relative text-sm font-semibold transition-colors ${
+                activeId === id ? "text-ink" : "text-ink-soft hover:text-ink"
+              }`}
             >
               {label}
-              <ArrowRight size={15} />
+              {activeId === id && (
+                <span className="absolute -bottom-1.5 left-0 h-0.5 w-full rounded-full bg-gold" />
+              )}
             </button>
           ))}
         </nav>
+
+        <button
+          type="button"
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
+          onClick={() => setMobileOpen((open) => !open)}
+          className="flex h-9 w-9 items-center justify-center rounded-full border border-black/10 text-ink lg:hidden"
+        >
+          {mobileOpen ? <X size={17} /> : <Menu size={17} />}
+        </button>
+      </div>
+
+      {mobileOpen && (
+        <nav
+          className="animate-fade-up border-t border-black/5 bg-white px-6 pb-5 lg:hidden"
+          aria-label="Mobile navigation"
+        >
+          <ul className="flex flex-col gap-1 pt-3">
+            {navSections.map(({ id, label }) => (
+              <li key={id}>
+                <button
+                  type="button"
+                  onClick={() => handleNavClick(id)}
+                  className={`flex w-full items-center rounded-lg px-3 py-2.5 text-left font-semibold ${
+                    activeId === id ? "bg-grey text-ink" : "text-ink-soft hover:text-ink"
+                  }`}
+                >
+                  {label}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </nav>
       )}
-    </div>
+    </header>
   );
 }

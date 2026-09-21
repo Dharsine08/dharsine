@@ -1,71 +1,56 @@
-import { Mail, MapPin, Phone, Search } from "lucide-react";
-import Navbar from "../Navbar";
-import { aboutMe, languages, personal } from "../../data/resume";
+import { Mail, Phone } from "lucide-react";
+import { aboutMe, personal } from "../../data/resume";
 import profilePhoto from "../../assets/photo/profile.jpg";
 
-interface AboutProps {
-  activeId: string;
-}
-
-function scrollToSection(id: string) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-}
-
-export default function About({ activeId }: AboutProps) {
+export default function About() {
   return (
-    <section id="about" className="bg-cream">
-      <Navbar activeId={activeId} variant="light" />
-
-      <div className="mx-auto max-w-6xl px-6 pb-20 pt-6 sm:px-10">
-        <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
-          <div className="animate-fade-up">
-            <h2 className="section-heading text-5xl leading-[1.05] text-ink sm:text-6xl">
-              Hello,
-              <br />
-              I'm {personal.firstName}!
-            </h2>
-            <p className="mt-6 max-w-md leading-relaxed text-ink-soft">{aboutMe}</p>
-
-            <button
-              type="button"
-              onClick={() => scrollToSection("contact")}
-              className="mt-8 flex w-fit items-center gap-3 rounded-full bg-coral px-6 py-3.5 text-sm font-bold text-white shadow-card transition-transform hover:-translate-y-0.5"
-            >
-              <Search size={16} />
-              Get in touch
-            </button>
-          </div>
-
-          <div className="relative mx-auto mb-20 w-full max-w-xs animate-fade-up sm:mb-16 sm:max-w-sm">
-            <div className="absolute -inset-x-6 top-8 bottom-8 -z-10 rounded-lg bg-green" />
-            <div className="overflow-hidden rounded-lg shadow-card-lg">
+    <section id="about" className="bg-charcoal px-6 pb-20 pt-4 sm:px-10">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-start">
+          {/* Left: profile card */}
+          <div className="animate-fade-up flex flex-col items-center lg:items-start">
+            <div className="relative w-full max-w-xs -rotate-2 rounded-sm border-8 border-white bg-white shadow-card-lg">
               <img
                 src={profilePhoto}
                 alt={personal.name}
-                className="aspect-[3/4] w-full object-cover"
+                className="aspect-[4/5] w-full object-cover"
               />
+              <p className="section-heading px-2 pb-3 pt-2 text-center text-lg font-bold text-ink">
+                {personal.name}
+              </p>
             </div>
+            <p className="mt-6 text-sm font-semibold uppercase tracking-wide text-gold">
+              {personal.title}
+            </p>
+          </div>
 
-            {languages[0] && (
-              <span className="absolute -right-4 top-10 rounded-full bg-gold px-4 py-2 text-xs font-bold text-black shadow-card sm:right-[-2rem]">
-                {languages[0]}
-              </span>
-            )}
+          {/* Right: About + contact */}
+          <div className="animate-fade-up">
+            <h2 className="section-heading text-4xl text-white sm:text-5xl">
+              Hello, I'm {personal.firstName}!
+            </h2>
+            <p className="mt-6 max-w-lg leading-relaxed text-white/75">{aboutMe}</p>
 
-            <div className="absolute -bottom-8 left-1/2 w-[calc(100%+2rem)] -translate-x-1/2 rounded-xl bg-black p-5 text-white shadow-card-lg sm:w-[110%]">
-              <p className="section-heading mb-3 text-lg font-bold">Contact</p>
-              <div className="flex flex-col gap-2 text-xs text-white/80">
-                <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection("contact"); }} className="flex items-center gap-2 hover:text-white">
-                  <MapPin size={13} className="text-gold" />
-                  {personal.location}
-                </a>
-                <a href={`mailto:${personal.email}`} className="flex items-center gap-2 hover:text-white">
-                  <Mail size={13} className="text-gold" />
-                  <span className="break-all">{personal.email}</span>
-                </a>
-                <a href={`tel:${personal.phone}`} className="flex items-center gap-2 hover:text-white">
-                  <Phone size={13} className="text-gold" />
+            <div className="mt-8">
+              <p className="section-heading mb-4 text-xl text-white">Contact</p>
+              <div className="flex flex-col gap-3">
+                <a
+                  href={`tel:${personal.phone}`}
+                  className="flex w-fit items-center gap-3 text-sm text-white/85 transition-colors hover:text-gold"
+                >
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-blue">
+                    <Phone size={15} />
+                  </span>
                   {personal.phone}
+                </a>
+                <a
+                  href={`mailto:${personal.email}`}
+                  className="flex w-fit items-center gap-3 text-sm text-white/85 transition-colors hover:text-gold"
+                >
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-blue">
+                    <Mail size={15} />
+                  </span>
+                  {personal.email}
                 </a>
               </div>
             </div>
