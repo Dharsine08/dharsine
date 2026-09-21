@@ -1,16 +1,12 @@
 /**
  * Single source of truth for all resume/portfolio content.
  *
- * IMPORTANT — PLACEHOLDER NOTICE:
- * A resume PDF was referenced when this site was requested, but only two
- * images (a design reference and a profile photo) were actually available
- * while building this project — no resume PDF text was accessible.
- * The `careerObjective` and `professionalSummary` strings below were
- * drafted from the brief supplied for this build (B.Com graduate, aspiring
- * MBA professional, planning/organising, communication/teamwork, etc).
- * Please replace them with the exact wording from your real resume before
- * publishing this site. Every other field (skills, strengths, contact
- * details, achievements) is taken verbatim from what was supplied.
+ * All fields below are taken directly from Pius Ronaldo A.'s actual
+ * resume PDF. Nothing has been invented — the resume did not list an
+ * institution name, graduation year, or academic scores, so those are
+ * simply not shown rather than guessed. Date of birth and nationality
+ * are present in the resume but intentionally left off this
+ * public-facing site.
  */
 
 export const personal = {
@@ -21,16 +17,20 @@ export const personal = {
   phone: "+91 9159454711",
   location: "India",
   intro:
-    "I'm a B.Com graduate with a strong interest in business management and a clear goal of pursuing an MBA. I bring dependable planning and organising skills, a collaborative approach to teamwork, and a genuine willingness to learn — and I'm looking forward to building a career in business management.",
+    "I am a motivated and enthusiastic B.Com graduate with strong planning and organising skills. I am passionate about learning new concepts, solving problems, and working collaboratively. I aspire to build a successful career in business management by contributing effectively to organisational growth while continuously improving my professional and personal skills.",
 };
 
-// TODO(resume): replace with the exact career objective from your resume PDF.
 export const careerObjective =
-  "To build a strong foundation in business management by applying my academic knowledge and personal strengths in a professional environment, while pursuing an MBA to further develop my planning, leadership, and decision-making abilities.";
+  "To obtain a challenging position in a reputed organisation where I can utilise my planning, organising, and communication skills while continuously learning and contributing towards the success of the organisation.";
 
-// TODO(resume): replace with the exact professional summary from your resume PDF.
-export const professionalSummary =
-  "Motivated and detail-oriented B.Com graduate with a keen interest in business management, planning, and organisation. Known for clear communication, dependable teamwork, and a positive, adaptable attitude toward new challenges. Currently preparing to pursue an MBA to deepen my understanding of business strategy and management, with the goal of growing into a capable and responsible business management professional.";
+export const professionalSummary = [
+  "Motivated and dedicated B.Com graduate.",
+  "Strong planning and organising abilities.",
+  "Excellent willingness to learn and adapt.",
+  "Good communication and interpersonal skills.",
+  "Able to work independently and as a team member.",
+  "Passionate about business management and professional development.",
+];
 
 export const education = [
   {
@@ -86,12 +86,24 @@ export const digitalSkills = [
 
 export const strengths = [
   "Quick Learner",
+  "Positive Attitude",
   "Self-Motivated",
   "Responsible",
-  "Positive Attitude",
-  "Critical Thinking",
+  "Hardworking",
+  "Leadership Mindset",
   "Decision Making",
+  "Critical Thinking",
   "Team Collaboration",
+];
+
+// From the resume's "Personal Attributes" list — shown alongside strengths.
+export const personalAttributes = [
+  "Honest and Dedicated",
+  "Positive Mindset",
+  "Professional Behaviour",
+  "Strong Work Ethics",
+  "Good Team Player",
+  "Goal-Oriented",
 ];
 
 export type PortfolioCategory =

@@ -59,14 +59,13 @@ public/
 
 ## Content accuracy note
 
-`src/data/resume.ts` is the single source of truth for all content. Every
-field there is either taken directly from the information supplied for
-this build, or — for `careerObjective` and `professionalSummary` only —
-drafted from that same brief and clearly marked with a `TODO(resume)`
-comment, since no resume PDF text was available while building this
-project. **Replace those two fields with your exact resume wording**
-before publishing. Nothing else (skills, strengths, contact info,
-achievements, education) was invented.
+`src/data/resume.ts` is the single source of truth for all content, and
+every field — including `careerObjective` and `professionalSummary` — is
+taken verbatim from the actual uploaded resume PDF. Nothing was invented.
+The resume didn't list an institution name, graduation year, or academic
+scores for the B.Com, so those are simply not shown. Date of birth and
+nationality are present in the resume but intentionally left off this
+public-facing site.
 
 ## Replacing the profile photo
 
@@ -76,12 +75,12 @@ lines in `Sidebar.tsx` and `Hero.tsx` if you rename it). A 4:5 or square
 portrait photo works best — it's automatically rendered in grayscale via
 the `.photo-mono` CSS class in `src/index.css`.
 
-## Connecting the resume PDF download
+## The resume download button
 
-The "Download Resume" button links to `/resume/Pius_Ronaldo_A_Resume.pdf`.
-Add your actual resume PDF to `public/resume/` with that exact filename
-and the button will start serving it — no code changes needed. See
-`public/resume/README.md` for details.
+It already works — `public/resume/Pius_Ronaldo_A_Resume.pdf` is the
+actual resume you uploaded, and the "Download Resume" button in
+`Resume.tsx` links to `/resume/Pius_Ronaldo_A_Resume.pdf`. To update it
+later, replace that file (keep the same filename, or update the link).
 
 ## Updating portfolio projects
 

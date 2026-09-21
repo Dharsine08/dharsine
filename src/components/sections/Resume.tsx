@@ -5,6 +5,7 @@ import {
   education,
   languages,
   managementSkills,
+  personalAttributes,
   professionalSummary,
   strengths,
 } from "../../data/resume";
@@ -64,9 +65,14 @@ export default function Resume() {
             <h3 className="mb-3 text-lg font-bold text-ink">
               Professional Summary
             </h3>
-            <p className="leading-relaxed text-ink-soft">
-              {professionalSummary}
-            </p>
+            <ul className="flex flex-col gap-2">
+              {professionalSummary.map((line) => (
+                <li key={line} className="flex items-start gap-2.5 leading-relaxed text-ink-soft">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-dark" />
+                  {line}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
@@ -97,6 +103,19 @@ export default function Resume() {
                 </span>
               ))}
             </div>
+            <h3 className="mb-3 mt-6 text-sm font-bold uppercase tracking-wide text-ink-soft">
+              Personal Attributes
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {personalAttributes.map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-line bg-paper px-3.5 py-1.5 text-xs font-semibold text-ink-soft"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
           </div>
 
           <div>
@@ -117,15 +136,6 @@ export default function Resume() {
           </div>
         </div>
 
-        <p className="mt-10 rounded-xl border border-dashed border-line bg-paper-muted px-5 py-3 text-xs leading-relaxed text-ink-soft">
-          <strong className="text-ink">Note:</strong> the Download Resume
-          button links to{" "}
-          <code className="rounded bg-paper px-1.5 py-0.5">
-            /public/resume/Pius_Ronaldo_A_Resume.pdf
-          </code>
-          . Place your actual resume PDF at that path (see project README)
-          for the button to serve a real file.
-        </p>
       </div>
     </section>
   );

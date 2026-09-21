@@ -84,11 +84,11 @@ export default function Contact() {
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gold text-ink">
                   <Mail size={18} />
                 </span>
-                <div>
+                <div className="min-w-0">
                   <p className="text-xs font-semibold uppercase tracking-wide text-white/60">
                     Email
                   </p>
-                  <p className="font-bold">{personal.email}</p>
+                  <p className="break-words font-bold">{personal.email}</p>
                 </div>
               </a>
               <a
@@ -98,11 +98,11 @@ export default function Contact() {
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gold text-ink">
                   <Phone size={18} />
                 </span>
-                <div>
+                <div className="min-w-0">
                   <p className="text-xs font-semibold uppercase tracking-wide text-white/60">
                     Phone
                   </p>
-                  <p className="font-bold">{personal.phone}</p>
+                  <p className="break-words font-bold">{personal.phone}</p>
                 </div>
               </a>
             </div>
