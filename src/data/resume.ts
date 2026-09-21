@@ -1,200 +1,87 @@
 /**
  * Single source of truth for all resume/portfolio content.
  *
- * All fields below come directly from the detailed brief supplied for
- * this build. Nothing has been invented: no dashboard screenshot was
- * provided, so the project preview is explicitly labelled "Dashboard
- * Preview" with illustrative sample data, never presented as real
- * project results. No skill proficiency percentages are shown beyond
- * the three tools with stated levels (Excel, Power BI, Tableau).
+ * All fields below are taken directly from Balaji's actual resume PDF.
+ * Nothing has been invented: no institution name, graduation year,
+ * academic scores, work experience, or contact details (email, phone,
+ * LinkedIn, location) were included in the resume, so those are left
+ * as explicit, clearly-labelled placeholders rather than guessed. Date
+ * of birth is intentionally omitted from this public-facing site, per
+ * the brief's own recommendation.
  */
 
 export const personal = {
-  name: "Akash M.",
-  firstName: "Akash",
-  title: "MBA Finance & Marketing | Financial Analysis | Business Analytics & Dashboarding",
-  tagline: "Transforming financial data into meaningful insights for smarter business decisions.",
+  name: "Balaji",
+  title: "Computer Science Graduate | Aspiring IT Professional",
+  qualification: "B.Sc. Computer Science",
+  focus: ["Computer Applications", "IT Support", "Business Software", "Digital Skills"],
   intro:
-    "MBA Finance & Marketing candidate with an interest in financial analysis, business analytics, and data-driven decision-making.",
-  labels: ["Finance", "Business Analytics", "Data Visualization"],
-  location: "Thanjavur, Tamil Nadu, India",
-  email: "akash190728@gmail.com",
-  phone: "+91 7603873542",
-  linkedinUrl: "https://www.linkedin.com/in/akash-m-994990344",
-  linkedinLabel: "linkedin.com/in/akash-m-994990344",
+    "Motivated and responsible B.Sc. Computer Science graduate with an interest in computer applications, office tools, and teamwork. Familiar with MS Office, MS Excel, and Tally Prime, with good communication, problem-solving, and time-management abilities. Eager to learn new skills and contribute positively in a professional environment.",
 };
 
-export const aboutMe =
-  "MBA Finance & Marketing candidate with a strong foundation in Financial Analysis, Business Analytics, and Data Visualization. Skilled in Excel, Power BI, and financial reporting, with hands-on experience in dashboard development, profitability analysis, and KPI-driven performance tracking. Strong analytical and problem-solving abilities, with an interest in transforming complex data into actionable insights that support strategic decision-making, operational efficiency, and business growth.";
-
-export const featuredProject = {
-  number: "01",
-  title: "Financial & Sales Analytics Dashboard",
-  category: "Financial Analysis / Business Analytics",
-  tools: "Microsoft Excel & Power BI",
-  type: "Individual Academic Project",
-  highlights: [
-    "Built an interactive dashboard to monitor revenue, cost, profit, and sales performance.",
-    "Performed city-wise profitability analysis across multiple regions.",
-    "Created KPI cards, trend analysis charts, and management reporting dashboards.",
-    "Generated business insights to support data-driven decision-making.",
-    "Improved reporting efficiency through automation and dashboard visualization.",
-  ],
-  hasRealLink: false,
+// TODO(contact): none of these were provided in the resume — replace
+// with real details before publishing. isPlaceholder flags drive the
+// "Add yours" badges and disable the mailto/tel/LinkedIn links until set.
+export const contact = {
+  email: "your.email@example.com",
+  emailIsPlaceholder: true,
+  phone: "+91 00000 00000",
+  phoneIsPlaceholder: true,
+  linkedin: "linkedin.com/in/your-profile",
+  linkedinIsPlaceholder: true,
+  location: "Your City, India",
+  locationIsPlaceholder: true,
 };
 
 export const skillCategories = [
   {
-    category: "Financial Analysis & Reporting",
-    skills: [
-      "Financial Statement Analysis",
-      "Ratio Analysis",
-      "Variance Analysis",
-      "Basic Financial Modelling",
-      "Budgeting & Forecasting Fundamentals",
-      "FP&A Support",
-    ],
+    category: "Office & Productivity",
+    skills: ["MS Office", "MS Excel"],
   },
   {
-    category: "Business & Data Analytics",
-    skills: [
-      "Dashboard Development",
-      "KPI Tracking & Management Reporting",
-      "Revenue & Profitability Analysis",
-      "Sales Analytics",
-      "Trend Analysis",
-    ],
+    category: "Business Software",
+    skills: ["Tally Prime"],
   },
   {
-    category: "Domain Knowledge",
-    skills: [
-      "ESG & Sustainability Reporting",
-      "Investment Banking Fundamentals",
-      "Corporate Finance Concepts",
-      "Business Communication",
-    ],
+    category: "Computer Skills",
+    skills: ["Basic Computer Skills"],
+  },
+  {
+    category: "Professional Skills",
+    skills: ["Communication", "Teamwork", "Problem Solving", "Time Management"],
   },
 ];
 
-export interface Tool {
-  name: string;
-  level: string;
-  // Segments filled out of 3 — a qualitative visual cue tied to the
-  // stated level (Intermediate/Basics/Familiar), not a measured percentage.
-  segments: number;
-}
-
-export const tools: Tool[] = [
-  { name: "MS Excel", level: "Intermediate", segments: 2 },
-  { name: "Power BI", level: "Intermediate", segments: 2 },
-  { name: "Tableau", level: "Basics", segments: 1 },
-  { name: "SPSS", level: "Familiar", segments: 1 },
-];
-
-export interface EducationItem {
-  degree: string;
-  detail: string;
-  institution: string;
-  status: string;
-  current?: boolean;
-}
-
-export const education: EducationItem[] = [
+export const services = [
   {
-    degree: "Master of Business Administration (MBA)",
-    detail: "Specialisation: Finance & Marketing",
-    institution: "Gnanam School of Business, Thanjavur",
-    status: "Currently Pursuing — Expected Completion 2027",
-    current: true,
+    title: "Office & Documentation Support",
+    description: "Preparing and organising documents using MS Office tools.",
   },
   {
-    degree: "Bachelor of Commerce (B.Com. CA)",
-    detail: "",
-    institution: "Periyar Maniammai University, Thanjavur",
-    status: "2026",
+    title: "Spreadsheet & Excel Tasks",
+    description: "Working with data, calculations, and records in MS Excel.",
   },
   {
-    degree: "Class XII",
-    detail: "",
-    institution: "Don Bosco Matric Hr. Sec. School, Thanjavur",
-    status: "2023",
+    title: "Basic Computer Applications",
+    description: "Comfortable navigating everyday computer applications and systems.",
+  },
+  {
+    title: "Business Software Support",
+    description: "Familiarity with Tally Prime for basic business software tasks.",
   },
 ];
 
-export interface Certification {
-  number: string;
-  title: string;
-  provider: string;
-  description: string;
-}
-
-export const certifications: Certification[] = [
-  {
-    number: "01",
-    title: "Deloitte Data Analytics Virtual Experience",
-    provider: "Forage",
-    description:
-      "Applied data analysis, data visualization, and business reporting techniques in a simulated consulting environment.",
-  },
-  {
-    number: "02",
-    title: "Citi Investment Banking Virtual Experience",
-    provider: "Forage",
-    description:
-      "Gained exposure to financial modelling, valuation concepts, and investment banking operations.",
-  },
-  {
-    number: "03",
-    title: "Tata ESG Virtual Internship",
-    provider: "Forage",
-    description:
-      "Developed knowledge of ESG metrics, sustainability reporting, and responsible investment practices.",
-  },
-  {
-    number: "04",
-    title: "Financial Accounting Fundamentals",
-    provider: "Coursera",
-    description:
-      "Built a foundation in financial statements, accounting principles, and cash flow analysis.",
-  },
-  {
-    number: "05",
-    title: "Introduction to Finance, Accounting, Modelling & Valuation",
-    provider: "Udemy",
-    description:
-      "Acquired knowledge of DCF valuation, financial modelling, and Excel-based financial analysis.",
-  },
-  {
-    number: "06",
-    title: "Additional Learning",
-    provider: "Digital Marketing, Introducing AI, Explore Basic AI, Microsoft with Copilot",
-    description:
-      "Learned digital marketing fundamentals and explored how AI tools can support content creation, data analysis, marketing strategies, and workplace productivity.",
-  },
-];
-
-export const careerInterests = [
-  {
-    title: "Financial Analysis",
-    description: "Financial information, profitability analysis, and business performance.",
-  },
-  {
-    title: "Business Analytics",
-    description: "KPI tracking, dashboards, trend analysis, and data-driven decision-making.",
-  },
-  {
-    title: "Financial Technology",
-    description: "The intersection of finance, technology, and business innovation.",
-  },
-];
+export const education = {
+  degree: "B.Sc. Computer Science",
+  status: "Completed",
+};
 
 export const strengths = [
-  "Analytical and problem-solving abilities",
-  "Financial reporting and dashboard development",
-  "Data visualization and KPI tracking",
-  "Interest in data-driven strategic decision-making",
-  "Continuous professional development",
+  "Quick Learner",
+  "Adaptability",
+  "Positive Attitude",
+  "Responsibility",
+  "Teamwork",
+  "Self-Motivation",
+  "Problem-Solving Mindset",
 ];
-
-export const bringStatement =
-  "Turning complex data into clear insights that support better business decisions.";
